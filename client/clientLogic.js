@@ -3,21 +3,24 @@ const name = document.querySelector(".input-name");
 const text = document.querySelector(".input-text");
 const enter = document.querySelector(".container-page");
 const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
-let mes = "";
 Btn.addEventListener("click", e => btnSendPress());
 
 const createOtherMessage = text => {
     const d = document.createElement('div');
     let jsonRequest = JSON.parse(text);
 
-    if(jsonRequest.name == "RoCkStAr" && jsonRequest.text == "null"){
-        alert("New User");
+    if(jsonRequest.name === "RoCkStAr" && jsonRequest.text === "null"){
+        // alert("New User");
     }else
     {
         let html = "";
         html += "<div class=\"row\">";
         html += "<div class=\"col-12\">";
-        html += "<div class=\"name float-left\">" + jsonRequest.name + "</div>";
+        if(jsonRequest.name === ""){
+            html += "<div class=\"name float-left\">" + "Anonymous" + "</div>";
+        }else{
+            html += "<div class=\"name float-left\">" + jsonRequest.name + "</div>";
+        }
         html += "</div></div>"
         html += "<div class=\"row\">";
         html += "<div class=\"col-12\">";
