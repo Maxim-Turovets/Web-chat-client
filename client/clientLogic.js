@@ -2,25 +2,33 @@ const Btn = document.querySelector(".container-btn");
 const name = document.querySelector(".input-name");
 const text = document.querySelector(".input-text");
 const enter = document.querySelector(".container-page");
-const con = new WebSocket("ws://10.25.128.239:8080/sock/chat");
+const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
 let mes = "";
 Btn.addEventListener("click", e => btnSendPress());
 
 const createOtherMessage = text => {
-    // {"name":"John","text":"Hello"};
     const d = document.createElement('div');
     let jsonRequest = JSON.parse(text);
-    let html = "";
-    html += "<div class=\"row\">";
-    html += "<div class=\"col-12\">";
-    html += "<div class=\"name float-left\">" + jsonRequest.name + "</div>";
-    html += "</div></div>"
-    html += "<div class=\"row\">";
-    html += "<div class=\"col-12\">";
-    html += "<div class=\"other-messages float-left\">" + jsonRequest.text + "</div>";
-    html += "</div></div>"
-    d.innerHTML = html;
-    document.querySelector(".container-messages").appendChild(d);
+
+    if(jsonRequest.name == "RoCkStAr" && jsonRequest.text == "null"){
+        alert("New User");
+    }else
+    {
+        let html = "";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-12\">";
+        html += "<div class=\"name float-left\">" + jsonRequest.name + "</div>";
+        html += "</div></div>"
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-12\">";
+        html += "<div class=\"other-messages float-left\">" + jsonRequest.text + "</div>";
+        html += "</div></div>"
+        d.innerHTML = html;
+        document.querySelector(".container-messages").appendChild(d);
+        let audio = new Audio('message.mp3');
+        audio.volume = 1;
+        audio.play();
+    }
 };
 
 con.onopen = () => {
@@ -35,9 +43,9 @@ con.onmessage = event => {
 };
 
 function btnSendPress() {
-    // let json = "";
-    // json += "{\"name\":\"" + name.value +"\",\"text\":\"" + text.value + "\" }";
-    // con.send(json);
+    let json = "";
+    json += "{\"name\":\"" + name.value +"\",\"text\":\"" + text.value + "\" }";
+    con.send(json);
     createMyMessage();
     clearInput();
 }

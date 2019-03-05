@@ -57,10 +57,12 @@ button:hover {
 }
 
 .container-content {
-    width: 70%;
+    min-width: 100%;
 }
 
 .container-form {
+    min-width: 100%;
+
     position: relative;
     background: #fff;
     border-radius: 50px;
