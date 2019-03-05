@@ -16,7 +16,6 @@ p {
     margin: 0px;
 }
 
-
 /*---------------------------------------------*/
 input {
     outline: none;
@@ -32,7 +31,6 @@ textarea:focus, input:focus {
     border-color: transparent !important;
 }
 
-
 /*---------------------------------------------*/
 button {
     outline: none !important;
@@ -43,9 +41,6 @@ button {
 button:hover {
     cursor: pointer;
 }
-
-
-
 
 .container-page {
     width: 100%;
@@ -65,7 +60,7 @@ button:hover {
     width: 70%;
 }
 
-.wrap-login100 {
+.container-form {
     position: relative;
     background: #fff;
     border-radius: 50px;
@@ -78,40 +73,20 @@ button:hover {
     justify-content: space-between;
     padding: 91px 138px 19px 95px;
 }
-.wrap-login10 {
-    margin-top: 3%;
-    background: #fff;
-    border-radius: 50px;
-    justify-content: center;
-    padding: 0px 43px 12px 35px;
-    width: fit-content;
-    @include float-left;
-}
 
-.wrap-login10-my {
-    margin-top: 3%;
-    background: #fcbeff;
-    border-radius: 50px;
-    justify-content: center;
-    padding: 0px 43px 12px 35px;
-    width: fit-content;
-    @include float-right;
-}
-
-.login100-form {
+.form {
     margin-top: -62px;
     width: 290px;
 }
 
-
-.wrap-input100 {
+.container-input {
     position: relative;
     width: 100%;
     z-index: 1;
     margin-bottom: 10px;
 }
 
-.input100 {
+.input-name {
     font-family: Poppins-Medium;
     font-size: 15px;
     line-height: 1.5;
@@ -125,8 +100,21 @@ button:hover {
     padding: 0 30px 0 68px;
 }
 
+.input-text {
+    font-family: Poppins-Medium;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
 
-.container-login100-form-btn {
+    display: block;
+    width: 117%;
+    background: #e6e6e6;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px 0 68px;
+}
+
+.container-btn {
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -138,7 +126,7 @@ button:hover {
     padding-top: 20px;
 }
 
-.login100-form-btn {
+.btn {
     font-family: Montserrat-Bold;
     font-size: 15px;
     line-height: 1.5;
@@ -164,6 +152,34 @@ button:hover {
     transition: all 0.4s;
 }
 
-.login100-form-btn:hover {
+.btn:hover {
     background: #333333;
+}
+
+.name{
+    font-size: 13px;
+    margin-top: 3%;
+    background: #ffd1cc;
+    border-radius: 50px;
+    justify-content: center;
+    padding: 0px 5px 0px 5px;
+    width: fit-content;
+}
+
+.other-messages {
+    /*margin-top: 3%;*/
+    background: #fff;
+    border-radius: 50px;
+    justify-content: center;
+    padding: 0px 43px 5px 35px;
+    width: fit-content;
+}
+
+.my-messages {
+    /*margin-top: 3%;*/
+    background: #fcbeff;
+    border-radius: 50px;
+    justify-content: center;
+    padding: 0px 43px 5px 35px;
+    width: fit-content;
 }
