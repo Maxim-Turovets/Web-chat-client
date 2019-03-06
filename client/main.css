@@ -66,6 +66,8 @@ button:hover {
     min-width: 90%;
     z-index: 1;
     position: fixed;
+    left: 0;
+    bottom: 0;
     background: #fff;
     border-radius: 50px;
     overflow: hidden;
@@ -191,8 +193,4 @@ button:hover {
     justify-content: center;
     padding: 0px 43px 5px 35px;
     width: fit-content;
-}
-
-.place-holder {
-    min-height: 25%;
 }
