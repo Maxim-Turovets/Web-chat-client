@@ -194,3 +194,7 @@ button:hover {
     padding: 0px 43px 5px 35px;
     width: fit-content;
 }
+
+.space-holder {
+    height: 23.40%;
+}
