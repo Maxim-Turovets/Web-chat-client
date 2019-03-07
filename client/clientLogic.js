@@ -1,35 +1,38 @@
-const Btn = document.querySelector(".container-btn");
+const BtnSend = document.querySelector(".btn-send");
+const BtnGenChat = document.querySelector(".btn-general-chat");
+const BtnPrivChat = document.querySelector("btn-private-chat");
 const name = document.querySelector(".input-name");
 const text = document.querySelector(".input-text");
 const enter = document.querySelector(".container-page");
 const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
-
-Btn.addEventListener("click", e => btnSendPress());
-
-  text.addEventListener("keyup", function(event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-            btnSendPress();
-        }
-    });
-
 let messageCount = 0;
+
+BtnSend.addEventListener("click", e => btnSendPress());
+BtnGenChat.addEventListener("click", e => btnGenChatPress());
+BtnPrivChat.addEventListener("click", e => btnPrivChatPress());
+
+text.addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        btnSendPress();
+    }
+});
+
 
 const createOtherMessage = text => {
     const d = document.createElement('div');
     let jsonRequest = JSON.parse(text);
-    messageCount ++;
+    messageCount++;
 
-    if(jsonRequest.name === "RoCkStAr" && jsonRequest.text === "null"){
+    if (jsonRequest.name === "RoCkStAr" && jsonRequest.text === "null") {
         // alert("New User");
-    }else
-    {
+    } else {
         let html = "";
         html += "<div class=\"row\">";
         html += "<div class=\"col-12\">";
-        if(jsonRequest.name === ""){
+        if (jsonRequest.name === "") {
             html += "<div class=\"name float-left\">" + "Anonymous" + "</div>";
-        }else{
+        } else {
             html += "<div class=\"name float-left\">" + jsonRequest.name + "</div>";
         }
         html += "</div></div>";
@@ -57,17 +60,28 @@ con.onmessage = event => {
     createOtherMessage(event.data);
 };
 
-function btnSendPress() {
+function btnSendPress(qualifiedName, value) {
     let json = "";
-    json += "{\"name\":\"" + name.value +"\",\"text\":\"" + text.value + "\",\"authkey\":\"general\" }";
+    json += "{\"name\":\"" + name.value + "\",\"text\":\"" + text.value + "\",\"authkey\":\"general\" }";
     con.send(json);
     createMyMessage();
     clearInput();
 }
 
-function createMyMessage() {
-    messageCount ++;
+function btnGenChatPress(qualifiedName, value) {
+    document.querySelector(".container-login-form").setAttribute("style", "display:none");
+    document.querySelector(".container-chat-form").removeAttribute("style");
 
+}
+
+function btnPrivChatPress(qualifiedName, value) {
+    document.querySelector(".container-login-form").setAttribute("style", "display:none");
+    document.querySelector(".container-chat-form").removeAttribute("style");
+}
+
+
+function createMyMessage() {
+    messageCount++;
     const d = document.createElement('div');
     let html = "";
     html += "<div class=\"row\">";
