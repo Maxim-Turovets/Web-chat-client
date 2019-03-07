@@ -6,6 +6,13 @@ const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
 
 Btn.addEventListener("click", e => btnSendPress());
 
+  text.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            btnSendPress();
+        }
+    });
+
 let messageCount = 0;
 
 const createOtherMessage = text => {
