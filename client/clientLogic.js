@@ -52,8 +52,8 @@ con.onmessage = event => {
 
 function btnSendPress() {
     let json = "";
-    json += "{\"name\":\"" + name.value +"\",\"text\":\"" + text.value + "\" }";
-    // con.send(json);
+    json += "{\"name\":\"" + name.value +"\",\"text\":\"" + text.value + "\",\"authkey\":\"general\" }";
+    con.send(json);
     createMyMessage();
     clearInput();
 }
