@@ -13,27 +13,40 @@
 </head>
 <body>
 
+<!--https://pic.sopili.net/pub/emoji/apple/64/1f483.png - Girl-->
+<!--https://pic.sopili.net/pub/emoji/apple/64/1f57a.png - Boy-->
+
 <div class="container-page">
     <div class="container-content">
         <div class="container-login-form container-form">
             <form class="form">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-sm-8">
                         <div class="container-input">
                             <input class="input-name" type="text" placeholder="Enter your name....">
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-5">
-                        <div class="container-btn btn-general-chat">
-                            <button class="btn" type="button">General</button>
+                    <div class="col-sm-2">
+                        <div class="container-btn container-btn-im-girl">
+                            <button class="btn btn-im-girl" type="button">I'm girl</button>
                         </div>
                     </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                        <div class="container-btn btn-private-chat">
-                            <button class="btn" type="button">Private</button>
+                    <div class="col-sm-2">
+                        <div class="container-btn container-btn-im-boy">
+                            <button class="btn btn-im-boy" type="button">I'm boy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="container-btn container-btn-general-chat">
+                            <button class="btn btn-general-chat" type="button">General</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-5">
+                        <div class="container-btn container-btn-private-chat">
+                            <button class="btn btn-private-chat" type="button">Private</button>
                         </div>
                     </div>
                 </div>
@@ -42,26 +55,23 @@
         <div class="container-chat-form container-form" style="display:none">
             <form class="form">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-sm-12">
                         <div class="container-input">
-                            <input class="input-text" id="text-input" type="text" placeholder="Enter message....">
+                            <input class="input-text" id="text-input" type="text"
+                                   placeholder="Enter message....">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <div class="container-btn btn-send">
-                            <button class="btn" type="button">Send</button>
+                    <div class="col-sm-12">
+                        <div class="container-btn container-btn-send">
+                            <button class="btn btn-send" type="button">Send</button>
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
-        <div class="container-messages">
-
-        </div>
-
+        <div class="container-messages"></div>
     </div>
 </div>
 

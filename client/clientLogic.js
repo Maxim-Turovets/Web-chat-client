@@ -1,15 +1,21 @@
-const BtnSend = document.querySelector(".btn-send");
-const BtnGenChat = document.querySelector(".btn-general-chat");
-const BtnPrivChat = document.querySelector("btn-private-chat");
+const BtnSend = document.querySelector(".container-btn-send");
+const BtnGenChat = document.querySelector(".container-btn-general-chat");
+const BtnPrivChat = document.querySelector(".container-btn-private-chat");
+const BtnGirl = document.querySelector(".container-btn-im-girl");
+const BtnBoy = document.querySelector(".container-btn-im-boy");
 const name = document.querySelector(".input-name");
 const text = document.querySelector(".input-text");
-const enter = document.querySelector(".container-page");
-// const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
+const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
 let messageCount = 0;
+let gender = "none";
+let chatType = "none";
+
 
 BtnSend.addEventListener("click", e => btnSendPress());
 BtnGenChat.addEventListener("click", e => btnGenChatPress());
-BtnPrivChat.addEventListener("click", e => btnPrivChatPress());
+BtnPrivChat.addEventListener("click", e => btnPrivateChatPress());
+BtnGirl.addEventListener("click", e => btnGirlPress());
+BtnBoy.addEventListener("click", e => btnBoyPress());
 
 text.addEventListener("keyup", function (event) {
     event.preventDefault();
@@ -62,8 +68,9 @@ con.onmessage = event => {
 
 function btnSendPress(qualifiedName, value) {
     let json = "";
-    json += "{\"name\":\"" + name.value + "\",\"text\":\"" + text.value + "\",\"authkey\":\"general\" }";
+    json += "{\"name\":\"" + name.value + "\",\"text\":\"" + text.value + "\",\"authkey\":\"" + chatType +"\"}";
     con.send(json);
+    console.log(json);
     createMyMessage();
     clearInput();
 }
@@ -71,13 +78,15 @@ function btnSendPress(qualifiedName, value) {
 function btnGenChatPress(qualifiedName, value) {
     document.querySelector(".container-login-form").setAttribute("style", "display:none");
     document.querySelector(".container-chat-form").removeAttribute("style");
+    chatType = "general";
     createAlertNewUser(name);
     newUserLogin();
 }
 
-function btnPrivChatPress(qualifiedName, value) {
+function btnPrivateChatPress(qualifiedName, value) {
     document.querySelector(".container-login-form").setAttribute("style", "display:none");
     document.querySelector(".container-chat-form").removeAttribute("style");
+    chatType = "pair";
     createAlertNewUser(name);
     newUserLogin();
 }
@@ -117,7 +126,7 @@ function createAlertNewUser(n) {
     html += "<div class=\"row\">";
     html += "<div class=\"col-4\"></div>";
     html += "<div class=\"col-4\">";
-    html += "<div class=\"new-user\" id=\"message-" + messageCount.toString() + "\">" + n.value + " joined the chat</div></div>";
+    html += "<div class=\"new-user text-center\" id=\"message-" + messageCount.toString() + "\">" + n.value + " joined the chat</div></div>";
     html += "<div class=\"col-4\">";
     html += "</div></div>";
     d.innerHTML = html;
@@ -126,4 +135,12 @@ function createAlertNewUser(n) {
     audio.volume = 1;
     audio.play();
     document.location.href = "#message-" + messageCount.toString();
+}
+
+function btnGirlPress() {
+    gender = "girl";
+}
+
+function btnBoyPress() {
+    gender = "boy";
 }

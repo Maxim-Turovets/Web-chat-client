@@ -93,6 +93,7 @@ button:hover {
     width: 100%;
     z-index: 1;
     margin-bottom: 5px;
+    padding-top: 10px;
 }
 
 .input-name {
@@ -100,11 +101,11 @@ button:hover {
     font-size: 15px;
     line-height: 1.5;
     color: #666666;
-
     display: block;
     min-width: 100%;
     background: #e6e6e6;
     height: 40px;
+    width: inherit;
     border-radius: 25px;
     padding: 0 10px 0 10px;
 }
@@ -114,7 +115,6 @@ button:hover {
     font-size: 15px;
     line-height: 1.5;
     color: #666666;
-
     display: block;
     min-width: 100%;
     background: #e6e6e6;
@@ -133,6 +133,8 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 10px;
+    margin-bottom: 5px;
+
 }
 
 .btn {
@@ -160,6 +162,14 @@ button:hover {
     transition: all 0.4s;
 }
 
+.btn-im-girl {
+    background: #c850c0;
+}
+
+.btn-im-boy {
+    background: #4158d0;
+}
+
 .btn:hover {
     background: #333333;
 }
@@ -181,10 +191,11 @@ button:hover {
     overflow-x: hidden;
 }
 
-.container-messages::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+.container-messages::-webkit-scrollbar{
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
 }
+
 /* optional: show position indicator in red */
 .container-messages::-webkit-scrollbar-thumb {
     background: #FF0000;
