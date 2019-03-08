@@ -190,6 +190,16 @@ button:hover {
     background: #FF0000;
 }
 
+.new-user {
+    background: #1f1f1f;
+    color: #e6e6e6;
+    border-radius: 50px;
+    justify-content: center;
+    padding: 0px 43px 5px 35px;
+    width: fit-content;
+    margin: auto;
+}
+
 .other-messages {
     background: #fff;
     border-radius: 50px;
