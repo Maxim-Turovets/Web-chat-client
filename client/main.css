@@ -63,7 +63,8 @@ button:hover {
 .container-form {
     margin-left: 5%;
     margin-right: 5%;
-    min-width: 90%;
+    margin-bottom: 15px;
+    width: 90%;
     z-index: 1;
     background: #fff;
     border-radius: 50px;
@@ -116,7 +117,7 @@ button:hover {
     line-height: 1.5;
     color: #666666;
     display: block;
-    min-width: 100%;
+    width: 100%;
     background: #e6e6e6;
     height: 40px;
     border-radius: 25px;
