@@ -69,8 +69,9 @@ con.onmessage = event => {
 function btnSendPress(qualifiedName, value) {
     let json = "";
     let safetyMessage = text.value.replace(/[<]/g, "&lt");
+
     json += "{\"name\":\"" + name.value + "\",\"text\":\"" + safetyMessage + "\",\"authkey\":\"" + chatType +"\"}";
-    con.send(json);
+    // con.send(json);
     console.log(json);
     createMyMessage();
     clearInput();
@@ -110,7 +111,7 @@ function createMyMessage() {
     html += "</div></div>";
     html += "<div class=\"row\">";
     html += "<div class=\"col-sm-12\">";
-    html += "<div class=\"my-messages float-right\" id=\"message-" + messageCount.toString() + ">\"" + safetyMessage + "</div>";
+    html += "<div class=\"my-messages float-right\" id=\"message-" + messageCount.toString() + "\">" + safetyMessage + "</div>";
     html += "</div></div>";
     d.innerHTML = html;
     document.querySelector(".container-messages").appendChild(d);
