@@ -75,7 +75,7 @@ button:hover {
     display: -ms-flexbox;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 25px 50px 25px 50px;
+    padding: 15px 25px 15px 25px;
 }
 
 .container-chat-form {
@@ -188,7 +188,6 @@ button:hover {
 .container-messages {
     height: 76.6%;
     overflow-y: scroll;
-    padding-right: 20px;
     overflow-x: hidden;
 }
 
@@ -207,8 +206,8 @@ button:hover {
     color: #e6e6e6;
     border-radius: 50px;
     justify-content: center;
-    padding: 0px 43px 5px 35px;
-    width: fit-content;
+    padding: 5px 43px 5px 35px;
+    width: 100%;
     margin: auto;
 }
 

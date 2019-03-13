@@ -43,7 +43,7 @@ const createOtherMessage = text => {
         }
         html += "</div></div>";
         html += "<div class=\"row\">";
-        html += "<div class=\"col-12\">";
+        html += "<div class=\"col-sm-12\">";
         html += "<div class=\"other-messages float-left\" id=\"message-" + messageCount.toString() + "\">" + jsonRequest.text + "";
     }
     html += "</div></div>";
@@ -68,7 +68,8 @@ con.onmessage = event => {
 
 function btnSendPress(qualifiedName, value) {
     let json = "";
-    json += "{\"name\":\"" + name.value + "\",\"text\":\"" + text.value + "\",\"authkey\":\"" + chatType +"\"}";
+    let safetyMessage = text.value.replace(/[<]/g, "&lt");
+    json += "{\"name\":\"" + name.value + "\",\"text\":\"" + safetyMessage + "\",\"authkey\":\"" + chatType +"\"}";
     con.send(json);
     console.log(json);
     createMyMessage();
@@ -101,14 +102,15 @@ function newUserLogin() { //    send message about new user login
 function createMyMessage() {
     messageCount++;
     const d = document.createElement('div');
+    let safetyMessage = text.value.replace(/[<]/g, "&lt");
     let html = "";
     html += "<div class=\"row\">";
     html += "<div class=\"col-12\">";
     html += "<div class=\"name float-right\">" + name.value + "</div>";
     html += "</div></div>";
     html += "<div class=\"row\">";
-    html += "<div class=\"col-12\">";
-    html += "<div class=\"my-messages float-right\" id=\"message-" + messageCount.toString() + "\">" + text.value + "</div>";
+    html += "<div class=\"col-sm-12\">";
+    html += "<div class=\"my-messages float-right\" id=\"message-" + messageCount.toString() + ">\"" + safetyMessage + "</div>";
     html += "</div></div>";
     d.innerHTML = html;
     document.querySelector(".container-messages").appendChild(d);
@@ -124,11 +126,9 @@ function createAlertNewUser(n) {
     messageCount++;
     let html = "";
     html += "<div class=\"row\">";
-    html += "<div class=\"col-4\"></div>";
-    html += "<div class=\"col-4\">";
+    html += "<div class=\"col-sm-12\">";
     html += "<div class=\"new-user text-center\" id=\"message-" + messageCount.toString() + "\">" + n.value + " joined the chat</div></div>";
-    html += "<div class=\"col-4\">";
-    html += "</div></div>";
+    html += "</div>";
     d.innerHTML = html;
     document.querySelector(".container-messages").appendChild(d);
     let audio = new Audio('message.mp3');
