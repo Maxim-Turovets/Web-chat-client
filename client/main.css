@@ -187,10 +187,28 @@ button:hover {
     width: fit-content;
 }
 
-.container-messages {
-    height: 76.6%;
+.container-messages{
+    height: 78%;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+@media (min-height: 600px){
+    .container-messages {
+        height: 80%;
+    }
+}
+
+@media (min-height: 800px){
+    .container-messages {
+        height: 85%;
+    }
+}
+
+@media (min-height: 1200px){
+    .container-messages {
+        height: 90%;
+    }
 }
 
 .container-messages::-webkit-scrollbar{

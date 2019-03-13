@@ -52,7 +52,7 @@ const createOtherMessage = text => {
         audio.volume = 1;
         audio.play();
     }
-    document.location.href = "#message-" + messageCount.toString();
+    // document.location.href = "#message-" + messageCount.toString();
 };
 
 con.onopen = () => {
@@ -71,7 +71,7 @@ function btnSendPress(qualifiedName, value) {
     let safetyMessage = text.value.replace(/[<]/g, "&lt");
 
     json += "{\"name\":\"" + name.value + "\",\"text\":\"" + safetyMessage + "\",\"authkey\":\"" + chatType +"\"}";
-    con.send(json);
+    // con.send(json);
     console.log(json);
     createMyMessage();
     clearInput();
