@@ -165,10 +165,12 @@ button:hover {
 
 .btn-im-girl {
     background: #c850c0;
+    padding: 0 0px !important;
 }
 
 .btn-im-boy {
     background: #4158d0;
+    padding: 0 0px !important;
 }
 
 .btn:hover {
@@ -181,7 +183,7 @@ button:hover {
     background: #ffd1cc;
     border-radius: 50px;
     justify-content: center;
-    padding: 0px 5px 0px 5px;
+    padding: 5px 5px 5px 5px;
     width: fit-content;
 }
 
