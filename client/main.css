@@ -209,8 +209,10 @@ button:hover {
     border-radius: 50px;
     justify-content: center;
     padding: 5px 43px 5px 35px;
-    width: 100%;
+    width: fit-content;
     margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .other-messages {
