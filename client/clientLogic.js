@@ -26,15 +26,14 @@ text.addEventListener("keyup", function (event) {
 
 
 const createOtherMessage = text => {
-    const d = document.createElement('div');
     let jsonRequest = JSON.parse(text);
-    messageCount++;
-    let html = "";
-    html += "<div class=\"row\">";
-    if (jsonRequest.text === "NEWUSER_ADD#379892384792837" && jsonRequest.authkey === "NEWUSER_ADD#qwe9uqw89238y4uh23ird2398423uriheibqwe98qw7") {
-        // alert("New User joined the chat");
+    if (jsonRequest.text === "none" && jsonRequest.authkey === "general"&&jsonRequest.name!="none") {
         createAlertNewUser(jsonRequest.name);
-    } else {
+    }
+    else {
+        const d = document.createElement('div');
+        let html = "";
+        html += "<div class=\"row\">";
         html += "<div class=\"col-12\">";
         if (jsonRequest.name === "") {
             html += "<div class=\"name float-left\">" + "Anonymous" + "</div>";
@@ -45,13 +44,14 @@ const createOtherMessage = text => {
         html += "<div class=\"row\">";
         html += "<div class=\"col-sm-12\">";
         html += "<div class=\"other-messages float-left\" id=\"message-" + messageCount.toString() + "\">" + jsonRequest.text + "";
+
+        html += "</div></div>";
+        d.innerHTML = html;
+        document.querySelector(".container-messages").appendChild(d);
+        let audio = new Audio('message.mp3');
+        audio.volume = 1;
+        audio.play();
     }
-    html += "</div></div>";
-    d.innerHTML = html;
-    document.querySelector(".container-messages").appendChild(d);
-    let audio = new Audio('message.mp3');
-    audio.volume = 1;
-    audio.play();
     document.location.href = "#message-" + messageCount.toString();
 };
 
@@ -71,7 +71,7 @@ function btnSendPress(qualifiedName, value) {
     let safetyMessage = text.value.replace(/[<]/g, "&lt");
 
     json += "{\"name\":\"" + name.value + "\",\"text\":\"" + safetyMessage + "\",\"authkey\":\"" + chatType +"\"}";
-    // con.send(json);
+    con.send(json);
     console.log(json);
     createMyMessage();
     clearInput();
@@ -81,7 +81,7 @@ function btnGenChatPress(qualifiedName, value) {
     document.querySelector(".container-login-form").setAttribute("style", "display:none");
     document.querySelector(".container-chat-form").removeAttribute("style");
     chatType = "general";
-    createAlertNewUser(name);
+    createAlertNewUser(name.value);
     newUserLogin();
 }
 
@@ -94,14 +94,18 @@ function btnPrivateChatPress(qualifiedName, value) {
 }
 
 function newUserLogin() { //    send message about new user login
-    let json = "";
-    json += "{\"name\":\"" + name.value + "\",\"text\":\"NEWUSER_ADD#379892384792837\",\"authkey\":\"NEWUSER_ADD#qwe9uqw89238y4uh23ird2398423uriheibqwe98qw7\" }";
-    con.send(json);
+    let json = {
+        name:name.value,
+        text:"none",
+        authkey:"general"
+    };
+    con.send(JSON.stringify(json));
 }
 
 
 function createMyMessage() {
     messageCount++;
+
     const d = document.createElement('div');
     let safetyMessage = text.value.replace(/[<]/g, "&lt");
     let html = "";
@@ -128,7 +132,7 @@ function createAlertNewUser(n) {
     let html = "";
     html += "<div class=\"row\">";
     html += "<div class=\"col-sm-12\">";
-    html += "<div class=\"new-user text-center\" id=\"message-" + messageCount.toString() + "\">" + n.value + " joined the chat</div></div>";
+    html += "<div class=\"new-user text-center\" id=\"message-" + messageCount.toString() + "\">" + n + " joined the chat</div></div>";
     html += "</div>";
     d.innerHTML = html;
     document.querySelector(".container-messages").appendChild(d);
