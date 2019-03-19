@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="containers.css">
     <link rel="stylesheet" href="buttons.css">
     <link rel="stylesheet" href="other_elements.css">
+    <link rel="stylesheet" href="animation.css">
 
     <title>Chat by Maxim Turovets</title>
 </head>
@@ -29,51 +30,53 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class=" col-sm-6">
+                            <div class=" col-sm-2"></div>
+                            <div class=" col-sm-4">
                                 <div class="container-btn">
                                     <button type="button" class="btn btn-private" id="btnPrivate">Private</button>
                                 </div>
                             </div>
-                            <div class=" col-sm-6">
+                            <div class=" col-sm-4">
                                 <div class="container-btn">
                                     <button type="button" class="btn btn-general" id="btnGeneral">General</button>
                                 </div>
                             </div>
+                            <div class=" col-sm-2"></div>
                         </div>
                     </form>
                 </div>
             </div>
 
             <!-- Form  "Enter name"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type">
-                <div class="container-form container-enter-name">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-enter-name" style="display: none">
+                <div class="container-form container-enter-name-form">
                     <form class="form">
                         <div class="row">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-10">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
                                 <div class="container-input">
                                     <input class="input input-name" id="inpGeneralName"
                                            type="text" placeholder="Enter your name...">
                                 </div>
                             </div>
-                            <div class="col-sm-1"></div>
+                            <div class="col-sm-3"></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-10">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
                                 <div class="container-btn">
-                                    <button type="button" class="btn" id="btnGeneralConnect">Connect</button>
+                                    <button type="button" class="btn btn-success" id="btnNameNext">Next</button>
                                 </div>
                             </div>
-                            <div class="col-sm-1"></div>
+                            <div class="col-sm-3"></div>
                         </div>
                     </form>
                 </div>
             </div>
 
             <!-- Form  "Set gender"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-gender">
-                <div class="container-form container-info-about-me-form">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-gender" style="display: none">
+                <div class="container-form container-set-gender-form">
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-12"><p class="text-center">Set your gender:</p></div>
@@ -97,8 +100,8 @@
             </div>
 
             <!-- Form  "Set age"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-age">
-                <div class="container-form container-info-about-me-form">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-age" style="display: none">
+                <div class="container-form container-set-age-form">
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-3"></div>
@@ -123,8 +126,9 @@
             </div>
 
             <!-- Form  "Settings Voice Message"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username">
-                <div class="container-form container-settings-voice-message">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-settings-voice-message"
+                 style="display: none">
+                <div class="container-form container-settings-voice-message-form">
                     <form class="form">
                         <div class="row">
                             <div class="col-12">
@@ -150,10 +154,105 @@
             </div>
 
 
+            <!-- "Information about partner"-->
+            <!-- Form  "Partners gender"-->
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-partners-gender"
+                 style="display: none">
+                <div class="container-form container-partners-gender-form">
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-sm-12"><p class="text-center">Set partners gender:</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-4">
+                                <div class="container-btn">
+                                    <button type="button" class="btn btn-im-boy" id="btnPartnerMale">Male</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="container-btn">
+                                    <button type="button" class="btn btn-im-girl" id="btnPartnerFemale">Female</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Form  "Set partners age"-->
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age"
+                 style="display: none">
+                <div class="container-form container-set-partners-age-form">
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-sm-12"><p class="text-center">Set partners age:</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <div class="container-input">
+                                    <input class="input" type="number" placeholder="From..." id="inpPartnersAgeFrom">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="container-input">
+                                    <input class="input" type="number" placeholder="To..." id="inpPartnersAgeTo">
+                                </div>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div class="container-btn">
+                                    <button type="button" class="btn btn-success" id="btnSearch">Search</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!--Animation-->
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age"
+                 style="display: none">
+                <div class="cssload-preloader cssload-loading" id="loading">
+                    <span class="cssload-slice"></span>
+                    <span class="cssload-slice"></span>
+                    <span class="cssload-slice"></span>
+                    <span class="cssload-slice"></span>
+                    <span class="cssload-slice"></span>
+                    <span class="cssload-slice"></span>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!--Message container-->
+    <div class="container-messages"></div>
 
+    <!--Chat form -->
+    <div class="container-form container-chat-form" style="display:none">
+        <form class="form">
+            <div class="row">
+                <div class="col-9 col-sm-10 col-md-10 col-lg-11">
+                    <div class="container-input">
+                        <input class="input-text" id="text-input" type="text"
+                               placeholder="Enter message....">
+                    </div>
+                </div>
+                <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                    <div class="container-btn container-btn-send">
+                        <button class="btn btn-send" type="button">Send</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </section>
 
 <script src="clientLogic.js"></script>
@@ -170,93 +269,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-<!--<html lang="en">-->
-<!--<head>-->
-<!--&lt;!&ndash; Required meta tags &ndash;&gt;-->
-<!--<meta charset="utf-8">-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-
-<!--&lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
-<!--integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-<!--<link rel="stylesheet" href=".css">-->
-
-<!--<title>Chat by Maxim Turovets</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="container-page">-->
-<!--<div class="container-content">-->
-<!--<div class="container-login-form container-form">-->
-<!--<form class="form">-->
-<!--<div class="row">-->
-<!--<div class="col-6 col-sm-6 col-md-8">-->
-<!--<div class="container-input">-->
-<!--<input class="input-name" type="text" placeholder="Enter your name....">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="col-3 col-sm-3 col-md-2">-->
-<!--<div class="container-btn container-btn-im-girl">-->
-<!--<button class="btn btn-im-girl" type="button"><div style="height: 99%; width: 99%"><img src="girl.svg" alt="I'm girl" style="height: inherit; width: inherit;"></div></button>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="col-3 col-sm-3 col-md-2">-->
-<!--<div class="container-btn container-btn-im-boy">-->
-<!--<button class="btn btn-im-boy" type="button"><div style="height: 99%; width: 99%"><img src="boy.svg" alt="I'm boy" style="height: inherit; width: inherit;"></div></button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-<!--<div class="col-5 col-sm-5 col-md-5">-->
-<!--<div class="container-btn container-btn-general-chat">-->
-<!--<button class="btn btn-general-chat" type="button">General</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="col-2 col-sm-2 col-md-2"></div>-->
-<!--<div class="col-5 col-sm-5 col-md-5">-->
-<!--<div class="container-btn container-btn-private-chat">-->
-<!--<button class="btn btn-private-chat" type="button">Private</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-<!--<div class="container-messages">-->
-<!--&lt;!&ndash;messages here&ndash;&gt;-->
-<!--</div>-->
-<!--<div class="container-chat-form container-form" style="display:none">-->
-<!--<form class="form">-->
-<!--<div class="row">-->
-<!--<div class="col-9 col-sm-10 col-md-10 col-lg-11">-->
-<!--<div class="container-input">-->
-<!--<input class="input-text" id="text-input" type="text"-->
-<!--placeholder="Enter message....">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="col-3 col-sm-2 col-md-2 col-lg-1">-->
-<!--<div class="container-btn container-btn-send">-->
-<!--<button class="btn btn-send" type="button">Send</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<script src="clientLogic.js"></script>-->
-
-<!--&lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
-<!--integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
-<!--crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"-->
-<!--integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"-->
-<!--crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"-->
-<!--integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"-->
-<!--crossorigin="anonymous"></script>-->
-
-<!--</body>-->
-<!--</html>-->
-
