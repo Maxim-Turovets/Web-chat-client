@@ -1,0 +1,100 @@
+.container-page {
+    width: 100%;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    background: #9053c7;
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+
+.container-form {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 15px;
+    width: 90%;
+    z-index: 0;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 25px 15px 25px;
+
+    /*-webkit-filter: blur(5px);*/
+    /*-moz-filter: blur(5px);*/
+    /*-o-filter: blur(5px);*/
+    /*-ms-filter: blur(5px);*/
+    /*filter: blur(5px);*/
+}
+
+.container-chat-form {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.container-input {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 5px;
+    padding-top: 10px;
+}
+
+.container-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+    margin-bottom: 5px;
+
+}
+
+.container-messages{
+    height: 78%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+@media (min-height: 600px){
+    .container-messages {
+        height: 80%;
+    }
+}
+
+@media (min-height: 800px){
+    .container-messages {
+        height: 85%;
+    }
+}
+
+@media (min-height: 1200px){
+    .container-messages {
+        height: 90%;
+    }
+}
+
+.container-messages::-webkit-scrollbar{
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
+}
+
+/* optional: show position indicator in red */
+.container-messages::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
