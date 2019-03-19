@@ -16,8 +16,8 @@
         <div class="row align-self-center w-100" style="margin: 0!important">
 
             <!-- Form  "Chose chat type"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type">
-                <div class="container-form container-info-form">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" style="display: none">
+                <div class="container-form container-chat-type-form">
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-12">
@@ -41,13 +41,13 @@
             </div>
 
             <!-- Form  "Enter name"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username"  style="display: none">
-                <div class="container-form container-info-form">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username" style="display: none">
+                <div class="container-form container-enter-name-form">
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="container-input">
-                                    <input class="form-control form-control-lg input-name" id="inpGeneralName"
+                                    <input class="input input-name" id="inpGeneralName"
                                            type="text" placeholder="Enter name">
                                 </div>
                             </div>
@@ -60,8 +60,45 @@
                     </form>
                 </div>
             </div>
-        </div>
 
+            <!-- Form  "Set gender"-->
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username">
+                <div class="container-form container-info-about-me-form">
+                    <form class="form">
+                        <div class="row">
+                        <div class="col-sm-12"><p class="text-center">Set your gender:</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-4">
+                                <div class="container-input">
+                                    <button type="button" class="btn btn-im-boy" id="btnMale">Male</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="container-input">
+                                    <button type="button" class="btn btn-im-girl" id="btnFemale">Female</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <div class="container-input">
+                                    <button type="button" class="btn btn-success" id="btnNext">Next</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+        </div>
     </div>
 
 
