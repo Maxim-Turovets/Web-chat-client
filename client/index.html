@@ -1,89 +1,148 @@
-<html lang="en">
+<html>
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 
     <title>Chat by Maxim Turovets</title>
 </head>
 <body>
-<div class="container-page">
-    <div class="container-content">
-        <div class="container-login-form container-form">
-            <form class="form">
-                <div class="row">
-                    <div class="col-6 col-sm-6 col-md-8">
-                        <div class="container-input">
-                            <input class="input-name" type="text" placeholder="Enter your name....">
+<section class="container-page">
+    <div class="d-flex h-100">
+        <div class="row align-self-center w-100" style="margin: 0!important">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
+                <div class="container-form container-info-form">
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="text-center">Chose chat type</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-3 col-sm-3 col-md-2">
-                        <div class="container-btn container-btn-im-girl">
-                            <button class="btn btn-im-girl" type="button"><div style="height: 99%; width: 99%"><img src="girl.svg" alt="I'm girl" style="height: inherit; width: inherit;"></div></button>
+                        <div class="row">
+                            <div class=" col-sm-6">
+                                <button type="button" class="btn btn-private" id="btnPrivate">Private</button>
+                            </div>
+                            <div class=" col-sm-6">
+                                <button type="button" class="btn btn-general" id="btnGeneral">General</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-3 col-sm-3 col-md-2">
-                        <div class="container-btn container-btn-im-boy">
-                            <button class="btn btn-im-boy" type="button"><div style="height: 99%; width: 99%"><img src="boy.svg" alt="I'm boy" style="height: inherit; width: inherit;"></div></button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="col-5 col-sm-5 col-md-5">
-                        <div class="container-btn container-btn-general-chat">
-                            <button class="btn btn-general-chat" type="button">General</button>
-                        </div>
-                    </div>
-                    <div class="col-2 col-sm-2 col-md-2"></div>
-                    <div class="col-5 col-sm-5 col-md-5">
-                        <div class="container-btn container-btn-private-chat">
-                            <button class="btn btn-private-chat" type="button">Private</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="container-messages">
-            <!--messages here-->
-        </div>
-        <div class="container-chat-form container-form" style="display:none">
-            <form class="form">
-                <div class="row">
-                    <div class="col-9 col-sm-10 col-md-10 col-lg-11">
-                        <div class="container-input">
-                            <input class="input-text" id="text-input" type="text"
-                                   placeholder="Enter message....">
-                        </div>
-                    </div>
-                    <div class="col-3 col-sm-2 col-md-2 col-lg-1">
-                        <div class="container-btn container-btn-send">
-                            <button class="btn btn-send" type="button">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+    <!--<article class ="container-form container-info-form">-->
+    <!--</article>-->
+
+
+
+</section>
 
 <script src="clientLogic.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
 </body>
 </html>
+
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--&lt;!&ndash; Required meta tags &ndash;&gt;-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+
+    <!--&lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
+          <!--integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="main.css">-->
+
+    <!--<title>Chat by Maxim Turovets</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container-page">-->
+    <!--<div class="container-content">-->
+        <!--<div class="container-login-form container-form">-->
+            <!--<form class="form">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-6 col-sm-6 col-md-8">-->
+                        <!--<div class="container-input">-->
+                            <!--<input class="input-name" type="text" placeholder="Enter your name....">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-3 col-sm-3 col-md-2">-->
+                        <!--<div class="container-btn container-btn-im-girl">-->
+                            <!--<button class="btn btn-im-girl" type="button"><div style="height: 99%; width: 99%"><img src="girl.svg" alt="I'm girl" style="height: inherit; width: inherit;"></div></button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-3 col-sm-3 col-md-2">-->
+                        <!--<div class="container-btn container-btn-im-boy">-->
+                            <!--<button class="btn btn-im-boy" type="button"><div style="height: 99%; width: 99%"><img src="boy.svg" alt="I'm boy" style="height: inherit; width: inherit;"></div></button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-5 col-sm-5 col-md-5">-->
+                        <!--<div class="container-btn container-btn-general-chat">-->
+                            <!--<button class="btn btn-general-chat" type="button">General</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-2 col-sm-2 col-md-2"></div>-->
+                    <!--<div class="col-5 col-sm-5 col-md-5">-->
+                        <!--<div class="container-btn container-btn-private-chat">-->
+                            <!--<button class="btn btn-private-chat" type="button">Private</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+        <!--<div class="container-messages">-->
+            <!--&lt;!&ndash;messages here&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="container-chat-form container-form" style="display:none">-->
+            <!--<form class="form">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-9 col-sm-10 col-md-10 col-lg-11">-->
+                        <!--<div class="container-input">-->
+                            <!--<input class="input-text" id="text-input" type="text"-->
+                                   <!--placeholder="Enter message....">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-3 col-sm-2 col-md-2 col-lg-1">-->
+                        <!--<div class="container-btn container-btn-send">-->
+                            <!--<button class="btn btn-send" type="button">Send</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<script src="clientLogic.js"></script>-->
+
+<!--&lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
+        <!--integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
+        <!--crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"-->
+        <!--integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"-->
+        <!--crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"-->
+        <!--integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"-->
+        <!--crossorigin="anonymous"></script>-->
+
+<!--</body>-->
+<!--</html>-->
 
