@@ -7,8 +7,9 @@ const containerSettingsVoiceMessage = document.getElementById("containerSettings
 const containerLoading = document.getElementById("containerLoading");
 const containerPartnersGender = document.getElementById("containerPartnersGender");
 const containerSetPartnerAge = document.getElementById("containerSetPartnerAge");
+const containerChatForm = document.getElementById("containerChatForm");
 
-const contaonerMessage = document.querySelector(".container-messages");
+const containerMessage = document.getElementById("containerMessage");
 const messageSend =document.getElementById("message-send");
 
 // button
@@ -23,19 +24,19 @@ const btnVoiceMessageNo = document.getElementById("btnVoiceMessageNo");
 const btnPartnerMale = document.getElementById("btnPartnerMale");
 const btnPartnerFemale = document.getElementById("btnPartnerFemale");
 const btnSearch = document.getElementById("btnSearch");
+const btnSend = document.getElementById("btnSend");
 
 //input
 const inpSetName = document.getElementById("inpSetName");
 const inpSetAge = document.getElementById("inpSetAge");
 const inpPartnersAgeFrom = document.getElementById("inpPartnersAgeFrom");
 const inpPartnersAgeTo = document.getElementById("inpPartnersAgeTo");
-
 const inpText = document.getElementById("inpText");
 
 
 
 const text = document.querySelector(".input-text");
-const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
+const con = new WebSocket("ws://localhost:8080/sock/chat");
 
 // json structure
 let UserInfo={
@@ -76,6 +77,7 @@ btnVoiceMessageNo.addEventListener("click", e => btnVoiceMessageNoPress());
 btnPartnerMale.addEventListener("click", e => btnPartnerMalePress());
 btnPartnerFemale.addEventListener("click", e => btnPartnerFemalePress());
 btnSearch.addEventListener("click", e => btnSearchPress());
+btnSend.addEventListener("click", e => btnSendPress());
 
 
 
@@ -92,9 +94,8 @@ con.onmessage = event => {
     if(event.data==="created")
     {
         containerLoading.style.display="none";
-        contaonerMessage.style.display="block";
         createAlertNewUser();
-        messageSend.style.display="block";
+        containerChatForm.style.display="block";
 
     }
     createOtherMessage(event.data);
@@ -123,10 +124,33 @@ function btnPrivatePress(qualifiedName, value) {
        //userInfo.style.display="block";
  }
 
+const createOtherMessage = text => {
+    let jsonRequest = JSON.parse(text);
 
+        const d = document.createElement('div');
+        let html = "";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-12\">";
+        if (jsonRequest.name === "") {
+            html += "<div class=\"name float-left\">" + "Anonymous" + "</div>";
+        } else {
+            html += "<div class=\"name float-left\">" + jsonRequest.name + "</div>";
+        }
+        html += "</div></div>";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-sm-12\">";
+        html += "<div class=\"other-messages float-left\" id=\"message-\">" + jsonRequest.text + "";
+
+        html += "</div></div>";
+        d.innerHTML = html;
+        document.getElementById("containerMessage").appendChild(d);
+        let audio = new Audio('message.mp3');
+        audio.volume = 1;
+        audio.play();
+
+};
 function createMyMessage() {
     const d = document.createElement('div');
-    let safetyMessage = text.value.replace(/[<]/g, "&lt");
     let html = "";
     html += "<div class=\"row\">";
     html += "<div class=\"col-12\">";
@@ -134,10 +158,10 @@ function createMyMessage() {
     html += "</div></div>";
     html += "<div class=\"row\">";
     html += "<div class=\"col-sm-12\">";
-    html += "<div class=\"my-messages float-right\" id=\"message-"+ "\">" + Message.text + "</div>";
+    html += "<div class=\"my-messages float-right\" id=\"message-"+ "\">" + Message.text.replace(/[<]/g, "&lt") + "</div>";
     html += "</div></div>";
     d.innerHTML = html;
-    document.querySelector(".container-messages").appendChild(d);
+    document.getElementById("containerMessage").appendChild(d);
 }
 
 function createAlertNewUser() {
@@ -148,7 +172,7 @@ function createAlertNewUser() {
     html += "<div class=\"new-user text-center\" id=\"message-"  + "\">" + " interlocutor joined the chat</div></div>";
     html += "</div>";
     d.innerHTML = html;
-    document.querySelector(".container-messages").appendChild(d);
+    document.getElementById("containerMessage").appendChild(d);
 }
 
 
