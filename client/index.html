@@ -17,7 +17,7 @@
 </head>
 <body>
 <section class="container-page" id="containerPage">
-    <div class="d-flex h-100">
+    <div class="d-flex h-100" style="display: none">
         <div class="row align-self-center w-100" style="margin: 0!important" id="containerMessage">
 
             <!-- Form  "Chose chat type"-->
@@ -245,25 +245,27 @@
     </div>
 
     <!--Message container-->
-    <div class="container-messages" style="display: none"></div>
+    <div id="container_message_block" style="display: none">
+        <div class="container-messages"></div>
 
-    <!--Chat form -->
-    <div class="container-form container-chat-form"  id="containerChatForm" style="display:none">
-        <form class="form">
-            <div class="row">
-                <div class="col-9 col-sm-10 col-md-10 col-lg-11">
-                    <div class="container-input">
-                        <input class="input-text" id="inpText" type="text"
-                               placeholder="Enter message....">
+        <!--Chat form -->
+        <div class="container-form container-chat-form" id="containerChatForm">
+            <form class="form">
+                <div class="row">
+                    <div class="col-9 col-sm-10 col-md-10 col-lg-11">
+                        <div class="container-input">
+                            <input class="input" id="inpText" type="text"
+                                   placeholder="Enter message....">
+                        </div>
+                    </div>
+                    <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                        <div class="container-btn container-btn-send">
+                            <button class="btn btn-send" type="button" id="btnSend">Send</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-3 col-sm-2 col-md-2 col-lg-1">
-                    <div class="container-btn container-btn-send">
-                        <button class="btn btn-send" type="button" id="btnSend">Send</button>
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </section>
 
