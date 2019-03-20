@@ -1,27 +1,9 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="containers.css">
-    <link rel="stylesheet" href="buttons.css">
-    <link rel="stylesheet" href="other_elements.css">
-    <link rel="stylesheet" href="animation.css">
-
-    <title>Chat by Maxim Turovets</title>
-</head>
-<body>
-<section class="container-page">
+<section class="container-page" id="containerPage">
     <div class="d-flex h-100">
-        <div class="row align-self-center w-100" style="margin: 0!important">
+        <div class="row align-self-center w-100" style="margin: 0!important" id="containerMessage">
 
             <!-- Form  "Chose chat type"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" >
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType">
                 <div class="container-form container-chat-type-form">
                     <form class="form">
                         <div class="row">
@@ -46,7 +28,8 @@
             </div>
 
             <!-- Form  "Enter name"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerSetName" style="display:none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerSetName"
+                 style="display:none">
                 <div class="container-form container-enter-name">
                     <form class="form">
                         <div class="row">
@@ -73,7 +56,8 @@
             </div>
 
             <!-- Form  "Set gender"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-gender" id="containerSetGender" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-gender"
+                 id="containerSetGender" style="display: none">
                 <div class="container-form container-info-about-me-form">
                     <form class="form">
                         <div class="row">
@@ -88,7 +72,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="container-btn">
-                                    <button type="button" class="btn btn-im-girl" id="btnSetGenderFemale">Female</button>
+                                    <button type="button" class="btn btn-im-girl" id="btnSetGenderFemale">Female
+                                    </button>
                                 </div>
                             </div>
                             <div class="col-sm-2"></div>
@@ -98,7 +83,8 @@
             </div>
 
             <!-- Form  "Set age"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-age" id="containerSetAge" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-age" id="containerSetAge"
+                 style="display: none">
                 <div class="container-form container-info-about-me-form">
                     <form class="form">
                         <div class="row">
@@ -124,7 +110,8 @@
             </div>
 
             <!-- Form  "Settings Voice Message"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username" id="containerSettingsVoiceMessage" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username"
+                 id="containerSettingsVoiceMessage" style="display: none">
                 <div class="container-form container-settings-voice-message">
                     <form class="form">
                         <div class="row">
@@ -153,7 +140,8 @@
             <!-- "Information about partner"-->
 
             <!-- Form  "Partners gender"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-partners-gender" id="containerPartnersGender"
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-partners-gender"
+                 id="containerPartnersGender"
                  style="display:none">
                 <div class="container-form container-partners-gender-form">
                     <div class="container-form_blur"></div>
@@ -180,7 +168,8 @@
             </div>
 
             <!-- Form  "Set partners age"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age " id="containerSetPartnerAge"
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age "
+                 id="containerSetPartnerAge"
                  style="display:none">
                 <div class="container-form container-set-partners-age-form">
                     <div class="container-form_blur"></div>
@@ -235,21 +224,25 @@
                 </div>
             </div>
 
+            <div class="container-chat-form container-form" style="display:none" id="containerChatForm">
+                <form class="form">
+                    <div class="row">
+                        <div class="col-9 col-sm-10 col-md-10 col-lg-11">
+                            <div class="container-input">
+                                <input class="input input-name" id="inpText" type="text"
+                                       placeholder="Enter message....">
+                            </div>
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                            <div class="container-btn container-btn-send">
+                                <button class="btn btn-send" type="button" id="btnSend">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="container-messages" style="display: none"></div>
         </div>
     </div>
 </section>
-
-<script src="clientLogic.js"></script>
-
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
-</html>
