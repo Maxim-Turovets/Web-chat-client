@@ -8,6 +8,9 @@ const containerLoading = document.getElementById("containerLoading");
 const containerPartnersGender = document.getElementById("containerPartnersGender");
 const containerSetPartnerAge = document.getElementById("containerSetPartnerAge");
 const containerChatForm = document.getElementById("containerChatForm");
+const containerMessageBlock = document.getElementById("container_message_block");
+const menuBlock = document.getElementById("menuBlock");
+
 
 const containerMessage = document.getElementById("containerMessage");
 const messageSend =document.getElementById("message-send");
@@ -36,7 +39,7 @@ const inpText = document.getElementById("inpText");
 
 
 const text = document.querySelector(".input-text");
-const con = new WebSocket("ws://localhost:8080/sock/chat");
+const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
 
 // json structure
 let UserInfo={
@@ -45,25 +48,25 @@ let UserInfo={
     gender:"",
     age:"",
     voiceMessage:false
-}
+};
 
 let ConnectInfo={
     objectType:"ConnectInfo",
     chatType:""
-}
+};
 
 let InterlocutorInfo={
     objectType:"InterlocutorInfo",
     gender:"",
     ageFrom:"",
     ageTo:""
-}
+};
 
 let Message ={
     objectType:"Message",
     name:"",
     text:""
-}
+};
 
 
 btnGeneral.addEventListener("click", e => btnGenChatPress());
@@ -93,10 +96,10 @@ con.onclose = () => {
 con.onmessage = event => {
     if(event.data==="created")
     {
+        menuBlock.style.display="none";
         containerLoading.style.display="none";
+        containerMessageBlock.style.display="block";
         createAlertNewUser();
-        containerChatForm.style.display="block";
-
     }
     createOtherMessage(event.data);
 };

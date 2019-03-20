@@ -78,8 +78,13 @@
 
 .container-messages{
     height: 78%;
+    width: 100%;
+    padding: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 @media (min-height: 600px){
