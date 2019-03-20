@@ -21,9 +21,8 @@
         <div class="row align-self-center w-100" style="margin: 0!important">
 
             <!-- Form  "Chose chat type"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" >
                 <div class="container-form container-chat-type-form">
-                    <div class="container-form_blur"></div>
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-12">
@@ -31,46 +30,43 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class=" col-sm-2"></div>
-                            <div class=" col-sm-4">
+                            <div class=" col-sm-6">
                                 <div class="container-btn">
                                     <button type="button" class="btn btn-private" id="btnPrivate">Private</button>
                                 </div>
                             </div>
-                            <div class=" col-sm-4">
+                            <div class=" col-sm-6">
                                 <div class="container-btn">
                                     <button type="button" class="btn btn-general" id="btnGeneral">General</button>
                                 </div>
                             </div>
-                            <div class=" col-sm-2"></div>
                         </div>
                     </form>
                 </div>
             </div>
 
             <!-- Form  "Enter name"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type"id="containerSetName" style="display:none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerSetName" style="display:none">
                 <div class="container-form container-enter-name">
-                    <div class="container-form_blur"></div>
                     <form class="form">
                         <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
                                 <div class="container-input">
-                                    <input class="input input-name" id="inpGeneralName"
+                                    <input class="input input-name" id="inpSetName"
                                            type="text" placeholder="Enter your name...">
                                 </div>
                             </div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-1"></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
                                 <div class="container-btn">
-                                    <button type="button" class="btn btn-success" id="btnNameNext">Next</button>
+                                    <button type="button" class="btn" id="btnSetNameNext">Next</button>
                                 </div>
                             </div>
-                            <div class="col-sm-3"></div>
+                            <div class="col-sm-1"></div>
                         </div>
                     </form>
                 </div>
@@ -79,7 +75,6 @@
             <!-- Form  "Set gender"-->
             <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-gender" id="containerSetGender" style="display: none">
                 <div class="container-form container-info-about-me-form">
-                    <div class="container-form_blur"></div>
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-12"><p class="text-center">Set your gender:</p></div>
@@ -88,12 +83,12 @@
                             <div class="col-sm-2"></div>
                             <div class="col-sm-4">
                                 <div class="container-btn">
-                                    <button type="button" class="btn btn-im-boy" id="btnMale">Male</button>
+                                    <button type="button" class="btn btn-im-boy" id="btnSetGenderMale">Male</button>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="container-btn">
-                                    <button type="button" class="btn btn-im-girl" id="btnFemale">Female</button>
+                                    <button type="button" class="btn btn-im-girl" id="btnSetGenderFemale">Female</button>
                                 </div>
                             </div>
                             <div class="col-sm-2"></div>
@@ -105,13 +100,12 @@
             <!-- Form  "Set age"-->
             <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-age" id="containerSetAge" style="display: none">
                 <div class="container-form container-info-about-me-form">
-                    <div class="container-form_blur"></div>
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
                                 <div class="container-input">
-                                    <input class="input" type="number" placeholder="Enter your age..." id="inpAge">
+                                    <input class="input" type="number" placeholder="Enter your age..." id="inpSetAge">
                                 </div>
                             </div>
                             <div class="col-sm-3"></div>
@@ -120,7 +114,7 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
                                 <div class="container-btn">
-                                    <button type="button" class="btn btn-success" id="btnNext">Next</button>
+                                    <button type="button" class="btn btn-success" id="btnSetAgeNext">Next</button>
                                 </div>
                             </div>
                             <div class="col-sm-3"></div>
@@ -132,7 +126,6 @@
             <!-- Form  "Settings Voice Message"-->
             <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username" id="containerSettingsVoiceMessage" style="display: none">
                 <div class="container-form container-settings-voice-message">
-                    <div class="container-form_blur"></div>
                     <form class="form">
                         <div class="row">
                             <div class="col-12">
@@ -157,11 +150,11 @@
                 </div>
             </div>
 
-
             <!-- "Information about partner"-->
+
             <!-- Form  "Partners gender"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-partners-gender"
-                 style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-partners-gender" id="containerPartnersGender"
+                 style="display:none">
                 <div class="container-form container-partners-gender-form">
                     <div class="container-form_blur"></div>
                     <form class="form">
@@ -187,8 +180,8 @@
             </div>
 
             <!-- Form  "Set partners age"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age"
-                 style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age " id="containerSetPartnerAge"
+                 style="display:none">
                 <div class="container-form container-set-partners-age-form">
                     <div class="container-form_blur"></div>
                     <form class="form">
@@ -222,43 +215,27 @@
                 </div>
             </div>
 
-
-            <!--Animation-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age"
-                 style="display: none">
-                <div class="cssload-preloader cssload-loading" id="loading">
-                    <span class="cssload-slice"></span>
-                    <span class="cssload-slice"></span>
-                    <span class="cssload-slice"></span>
-                    <span class="cssload-slice"></span>
-                    <span class="cssload-slice"></span>
-                    <span class="cssload-slice"></span>
+            <!-- Animation -->
+            <div class="cssload-container" id="containerLoading" style="display:none">
+                <div class="cssload-circle-1">
+                    <div class="cssload-circle-2">
+                        <div class="cssload-circle-3">
+                            <div class="cssload-circle-4">
+                                <div class="cssload-circle-5">
+                                    <div class="cssload-circle-6">
+                                        <div class="cssload-circle-7">
+                                            <div class="cssload-circle-8">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
-
-    <!--Message container-->
-    <div class="container-messages" style="display:none"></div>
-
-    <!--Chat form -->
-    <div class="container-form container-chat-form" style="display:none">
-        <div class="container-form_blur"></div>
-        <form class="form">
-            <div class="row">
-                <div class="col-9 col-sm-10 col-md-10 col-lg-11">
-                    <div class="container-input">
-                        <input class="input-text" id="text-input" type="text"
-                               placeholder="Enter message....">
-                    </div>
-                </div>
-                <div class="col-3 col-sm-2 col-md-2 col-lg-1">
-                    <div class="container-btn container-btn-send">
-                        <button class="btn btn-send" type="button">Send</button>
-                    </div>
-                </div>
-            </div>
-        </form>
     </div>
 </section>
 
