@@ -16,12 +16,12 @@
     <title>Chat by Maxim Turovets</title>
 </head>
 <body>
-<section class="container-page">
+<section class="container-page" id="containerPage">
     <div class="d-flex h-100">
-        <div class="row align-self-center w-100" style="margin: 0!important">
+        <div class="row align-self-center w-100" style="margin: 0!important" id="containerMessage">
 
             <!-- Form  "Chose chat type"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" >
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType">
                 <div class="container-form container-chat-type-form">
                     <form class="form">
                         <div class="row">
@@ -46,7 +46,8 @@
             </div>
 
             <!-- Form  "Enter name"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerSetName" style="display:none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerSetName"
+                 style="display:none">
                 <div class="container-form container-enter-name">
                     <form class="form">
                         <div class="row">
@@ -73,7 +74,8 @@
             </div>
 
             <!-- Form  "Set gender"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-gender" id="containerSetGender" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-gender"
+                 id="containerSetGender" style="display: none">
                 <div class="container-form container-info-about-me-form">
                     <form class="form">
                         <div class="row">
@@ -88,7 +90,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="container-btn">
-                                    <button type="button" class="btn btn-im-girl" id="btnSetGenderFemale">Female</button>
+                                    <button type="button" class="btn btn-im-girl" id="btnSetGenderFemale">Female
+                                    </button>
                                 </div>
                             </div>
                             <div class="col-sm-2"></div>
@@ -98,7 +101,8 @@
             </div>
 
             <!-- Form  "Set age"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-age" id="containerSetAge" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-age" id="containerSetAge"
+                 style="display: none">
                 <div class="container-form container-info-about-me-form">
                     <form class="form">
                         <div class="row">
@@ -124,7 +128,8 @@
             </div>
 
             <!-- Form  "Settings Voice Message"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username" id="containerSettingsVoiceMessage" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-username"
+                 id="containerSettingsVoiceMessage" style="display: none">
                 <div class="container-form container-settings-voice-message">
                     <form class="form">
                         <div class="row">
@@ -153,7 +158,8 @@
             <!-- "Information about partner"-->
 
             <!-- Form  "Partners gender"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-partners-gender" id="containerPartnersGender"
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-partners-gender"
+                 id="containerPartnersGender"
                  style="display:none">
                 <div class="container-form container-partners-gender-form">
                     <div class="container-form_blur"></div>
@@ -180,7 +186,8 @@
             </div>
 
             <!-- Form  "Set partners age"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age " id="containerSetPartnerAge"
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-set-partners-age "
+                 id="containerSetPartnerAge"
                  style="display:none">
                 <div class="container-form container-set-partners-age-form">
                     <div class="container-form_blur"></div>
@@ -238,10 +245,10 @@
     </div>
 
     <!--Message container-->
-    <div class="container-messages"></div>
+    <div class="container-messages" style="display: none"></div>
 
     <!--Chat form -->
-    <div class="container-form container-chat-form" style="display:none">
+    <div class="container-form container-chat-form"  id="containerChatForm" style="display:none">
         <form class="form">
             <div class="row">
                 <div class="col-9 col-sm-10 col-md-10 col-lg-11">
