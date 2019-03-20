@@ -35,7 +35,7 @@ const inpText = document.getElementById("inpText");
 
 
 const text = document.querySelector(".input-text");
-const con = new WebSocket("ws://localhost:8080/sock/chat");
+const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
 
 // json structure
 let UserInfo={
