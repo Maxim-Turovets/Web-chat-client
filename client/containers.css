@@ -12,6 +12,19 @@
     background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 
+.container-form_blur {
+    -webkit-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+}
 
 .container-form {
     margin-left: 5%;
@@ -19,8 +32,6 @@
     margin-bottom: 15px;
     width: 90%;
     z-index: 0;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 50px;
     overflow: hidden;
     display: -webkit-box;
     display: -webkit-flex;
@@ -30,11 +41,11 @@
     justify-content: space-between;
     padding: 15px 25px 15px 25px;
 
-    /*-webkit-filter: blur(5px);*/
-    /*-moz-filter: blur(5px);*/
-    /*-o-filter: blur(5px);*/
-    /*-ms-filter: blur(5px);*/
-    /*filter: blur(5px);*/
+
+}
+
+.container-form .form {
+
 }
 
 .container-chat-form {
