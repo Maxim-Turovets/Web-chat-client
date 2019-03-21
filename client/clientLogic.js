@@ -68,6 +68,11 @@ let Message ={
     text:""
 };
 
+let IfRoomCreated={
+    objectType:"IfRoomCreated",
+    nameInterlocutor:""
+}
+
 
 btnGeneral.addEventListener("click", e => btnGenChatPress());
 btnPrivate.addEventListener("click", e => btnPrivatePress());
@@ -94,13 +99,8 @@ con.onclose = () => {
 };
 
 con.onmessage = event => {
-    if(event.data==="created")
-    {
-        menuBlock.style.display="none";
-        containerLoading.style.display="none";
-        containerMessageBlock.style.display="block";
-        createAlertNewUser();
-    }
+    console.log(event.data);
+    createAlertNewUser(event.data);
     createOtherMessage(event.data);
 };
 
@@ -116,7 +116,6 @@ function btnGenChatPress(qualifiedName, value) {
     con.send(JSON.stringify(ConnectInfo));
     containerChatType.style.display = "none";
     containerSetName.style.display="block";
-    //generalInfo.style.display="block";
 }
 
 function btnPrivatePress(qualifiedName, value) {
@@ -124,12 +123,13 @@ function btnPrivatePress(qualifiedName, value) {
        con.send(JSON.stringify(ConnectInfo));
        containerChatType.style.display = "none";
        containerSetName.style.display="block";
-       //userInfo.style.display="block";
  }
 
 const createOtherMessage = text => {
     let jsonRequest = JSON.parse(text);
-
+      
+       if(jsonRequest.objectType === "Message")
+       {
         const d = document.createElement('div');
         let html = "";
         html += "<div class=\"row\">";
@@ -150,7 +150,7 @@ const createOtherMessage = text => {
         let audio = new Audio('message.mp3');
         audio.volume = 1;
         audio.play();
-
+       }
 };
 function createMyMessage() {
     const d = document.createElement('div');
@@ -167,17 +167,24 @@ function createMyMessage() {
     document.getElementById("containerMessage").appendChild(d);
 }
 
-function createAlertNewUser() {
-    const d = document.createElement('div');
-    let html = "";
-    html += "<div class=\"row\">";
-    html += "<div class=\"col-sm-12\">";
-    html += "<div class=\"new-user text-center\" id=\"message-"  + "\">" + " interlocutor joined the chat</div></div>";
-    html += "</div>";
-    d.innerHTML = html;
-    document.getElementById("containerMessage").appendChild(d);
-}
-
+const createAlertNewUser =text =>{
+        let jsonRequest = JSON.parse(text);
+        if (jsonRequest.objectType === "IfRoomCreated") 
+        {
+            menuBlock.style.display="none";
+            containerLoading.style.display="none";
+            containerMessageBlock.style.display="block";
+            IfRoomCreated.nameInterlocutor = jsonRequest.nameInterlocutor;
+            const d = document.createElement('div');
+            let html = "";
+            html += "<div class=\"row\">";
+            html += "<div class=\"col-sm-12\">";
+            html += "<div class=\"new-user text-center\" id=\"message-" + "\">" +IfRoomCreated.nameInterlocutor+" joined the chat</div></div>";
+            html += "</div>";
+            d.innerHTML = html;
+            document.getElementById("containerMessage").appendChild(d);
+        }
+    }
 
 function btnSetGenderMalePress() {
     UserInfo.gender="male";
