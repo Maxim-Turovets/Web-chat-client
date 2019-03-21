@@ -120,9 +120,9 @@ function btnGenChatPress(qualifiedName, value) {
 
 function btnPrivatePress(qualifiedName, value) {
        ConnectInfo.chatType="pair";
-       con.send(JSON.stringify(ConnectInfo));
-       containerChatType.style.display = "none";
-       containerSetName.style.display="block";
+       //con.send(JSON.stringify(ConnectInfo));
+       //containerChatType.style.display = "none";
+       //containerSetName.style.display="block";
  }
 
 const createOtherMessage = text => {
