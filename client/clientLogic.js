@@ -112,17 +112,17 @@ function btnSendPress(qualifiedName, value) {
 }
 
 function btnGenChatPress(qualifiedName, value) {
-    ConnectInfo.chatType="general";
-    con.send(JSON.stringify(ConnectInfo));
-    containerChatType.style.display = "none";
-    containerSetName.style.display="block";
+    //ConnectInfo.chatType="general";
+    //con.send(JSON.stringify(ConnectInfo));
+    //containerChatType.style.display = "none";
+    //containerSetName.style.display="block";
 }
 
 function btnPrivatePress(qualifiedName, value) {
        ConnectInfo.chatType="pair";
-       //con.send(JSON.stringify(ConnectInfo));
-       //containerChatType.style.display = "none";
-       //containerSetName.style.display="block";
+       con.send(JSON.stringify(ConnectInfo));
+       containerChatType.style.display = "none";
+       containerSetName.style.display="block";
  }
 
 const createOtherMessage = text => {
@@ -150,7 +150,12 @@ const createOtherMessage = text => {
         let audio = new Audio('message.mp3');
         audio.volume = 1;
         audio.play();
-       }
+
+        window.setInterval(function() {
+        var elem = document.getElementById("containerMessage");
+        elem.scrollTop = elem.scrollHeight;
+        }, 5000);
+        }
 };
 function createMyMessage() {
     const d = document.createElement('div');
