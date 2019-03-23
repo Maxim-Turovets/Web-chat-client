@@ -10,10 +10,9 @@ const containerSetPartnerAge = document.getElementById("containerSetPartnerAge")
 const containerChatForm = document.getElementById("containerChatForm");
 const containerMessageBlock = document.getElementById("container_message_block");
 const menuBlock = document.getElementById("menuBlock");
-
-
 const containerMessage = document.getElementById("containerMessage");
 const messageSend =document.getElementById("message-send");
+const containerInterlocutorDisconnected = document.getElementById("containerInterlocutorDisconnected");
 
 // button
 const btnPrivate = document.getElementById("btnPrivate");
@@ -28,6 +27,8 @@ const btnPartnerMale = document.getElementById("btnPartnerMale");
 const btnPartnerFemale = document.getElementById("btnPartnerFemale");
 const btnSearch = document.getElementById("btnSearch");
 const btnSend = document.getElementById("btnSend");
+const btnReconnect = document.getElementById("btnReconnect");
+const btnGoToMainMenu = document.getElementById("btnGoToMainMenu");
 
 //input
 const inpSetName = document.getElementById("inpSetName");
@@ -73,6 +74,10 @@ let IfRoomCreated={
     nameInterlocutor:""
 }
 
+let IfRoomDeleted={
+    objectType:"IfRoomDeleted"
+}
+
 
 btnGeneral.addEventListener("click", e => btnGenChatPress());
 btnPrivate.addEventListener("click", e => btnPrivatePress());
@@ -86,6 +91,8 @@ btnPartnerMale.addEventListener("click", e => btnPartnerMalePress());
 btnPartnerFemale.addEventListener("click", e => btnPartnerFemalePress());
 btnSearch.addEventListener("click", e => btnSearchPress());
 btnSend.addEventListener("click", e => btnSendPress());
+btnReconnect.addEventListener("click", e => btnReconnectPress());
+btnGoToMainMenu.addEventListener("click", e=>btnGoToMainMenuPress());
 
 
 
@@ -104,7 +111,7 @@ con.onmessage = event => {
     createOtherMessage(event.data);
 };
 
-function btnSendPress(qualifiedName, value) {
+function btnSendPress() {
     Message.name = UserInfo.name;
     Message.text = inpText.value;
     con.send(JSON.stringify(Message));
@@ -189,6 +196,11 @@ const createAlertNewUser =text =>{
             d.innerHTML = html;
             document.getElementById("containerMessage").appendChild(d);
         }
+        if(jsonRequest.objectType==="IfRoomDeleted")
+        {
+            containerMessageBlock.style.display="none";
+            containerInterlocutorDisconnected.style.display="block";
+        }
     }
 
 function btnSetGenderMalePress() {
@@ -249,4 +261,18 @@ function btnPartnerFemalePress() {
     InterlocutorInfo.gender="female";
     containerPartnersGender.style.display="none";
     containerSetPartnerAge.style.display="block";
+}
+
+function btnReconnectPress(){
+    con.send(JSON.stringify(IfRoomDeleted));
+    con.send(JSON.stringify(ConnectInfo));
+    con.send(JSON.stringify(UserInfo));
+    con.send(JSON.stringify(InterlocutorInfo));
+    containerInterlocutorDisconnected.style.display="none";
+    containerLoading.style.display="block";
+}
+
+function btnGoToMainMenuPress(){
+    containerChatType.style.display="block";
+    containerInterlocutorDisconnected.style.display="none";
 }

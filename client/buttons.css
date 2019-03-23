@@ -51,3 +51,11 @@
 .btn:hover {
     background: #333333;
 }
+
+#btnReconnect{
+    background: coral;
+}
+
+#btnGoToMainMenu{
+    background: linear-gradient(-202deg, #c850c0, #4158d0);
+}

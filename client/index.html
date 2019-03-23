@@ -162,7 +162,7 @@
                  id="containerPartnersGender"
                  style="display:none">
                 <div class="container-form container-partners-gender-form">
-                    <div class="container-form_blur"></div>
+                    <!-- <div class="container-form_blur"></div> -->
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-12"><p class="text-center">Set partners gender:</p></div>
@@ -190,7 +190,7 @@
                  id="containerSetPartnerAge"
                  style="display:none">
                 <div class="container-form container-set-partners-age-form">
-                    <div class="container-form_blur"></div>
+                    <!-- <div class="container-form_blur"></div> -->
                     <form class="form">
                         <div class="row">
                             <div class="col-sm-12"><p class="text-center">Set partners age:</p></div>
@@ -221,6 +221,35 @@
                     </form>
                 </div>
             </div>
+
+            
+            <!-- Form  "Interlocutor has disconnected"-->
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerInterlocutorDisconnected" style="display: none">
+                <div class="container-form container-chat-type-form">
+                    <div class="container-form_blur"></div>
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="text-center">The other person has disconnected</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-sm-6">
+                                <div class="container-btn">
+                                    <button type="button" class="btn" id="btnReconnect">Reconnect
+                                    </button>
+                                </div>
+                            </div>
+                            <div class=" col-sm-6">
+                                <div class="container-btn">
+                                    <button type="button" class="btn" id="btnGoToMainMenu">Go to the main menu</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
 
             <!-- Animation -->
             <div class="cssload-container" id="containerLoading" style="display:none">
@@ -267,6 +296,8 @@
             </form>
         </div>
     </div>
+
+
 </section>
 
 <script src="clientLogic.js"></script>
