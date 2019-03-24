@@ -271,7 +271,6 @@ function btnReconnectPress(){
     containerInterlocutorDisconnected.style.display="none";
     containerLoading.style.display="block";
 }
-
 function btnGoToMainMenuPress(){
     containerChatType.style.display="block";
     containerInterlocutorDisconnected.style.display="none";
