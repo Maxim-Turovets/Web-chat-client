@@ -274,8 +274,9 @@
     </div>
 
     <!--Message container-->
-    <div id="container_message_block" style="display: none">
+    <div id="container_message_block" style="display:none; ">
         <div class="container-messages" id="containerMessage"></div>
+
 
         <!--Chat form -->
         <div class="container-form container-chat-form" id="containerChatForm">
@@ -283,8 +284,9 @@
                 <div class="row">
                     <div class="col-9 col-sm-10 col-md-10 col-lg-11">
                         <div class="container-input">
-                            <input class="input input-text" id="inpText" type="text"
-                                   placeholder="Enter message....">
+                                                     
+                           <textarea class="input input-text js-auto-size" id="inpText" type="text"
+                                   placeholder="Enter message...."></textarea>
                         </div>
                     </div>
                     <div class="col-3 col-sm-2 col-md-2 col-lg-1">
@@ -295,11 +297,17 @@
                 </div>
             </form>
         </div>
+
+
     </div>
 
 
 </section>
 
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="textarea_autosize.js"></script>
+<script>$('textarea.js-auto-size').textareaAutoSize();</script>
 <script src="clientLogic.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

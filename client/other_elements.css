@@ -59,3 +59,10 @@
     padding: 0px 43px 5px 35px;
     width: fit-content;
 }
+
+textarea{
+    max-height: 11rem;
+    min-height: 3rem;
+    /*overflow: hidden; */
+
+}
