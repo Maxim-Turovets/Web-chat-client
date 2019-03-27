@@ -39,7 +39,10 @@ const inpText = document.getElementById("inpText");
 
 
 const text = document.querySelector(".input-text");
-const con = new WebSocket("ws://77.47.224.157:8080/sock/chat");
+const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
+
+
+
 
 // json structure
 let UserInfo={
@@ -65,7 +68,8 @@ let InterlocutorInfo={
 let Message ={
     objectType:"Message",
     name:"",
-    text:""
+    text:"",
+    time:""
 };
 
 let IfRoomCreated={
@@ -136,6 +140,7 @@ const createOtherMessage = text => {
       
        if(jsonRequest.objectType === "Message")
        {
+        
         const d = document.createElement('div');
         let html = "";
         html += "<div class=\"row\">";
@@ -150,20 +155,23 @@ const createOtherMessage = text => {
         html += "<div class=\"col-sm-12\">";
         html += "<div class=\"other-messages float-left\" id=\"message-\">" + jsonRequest.text + "";
 
-        html += "</div></div>";
+        html += "<br><i>"+jsonRequest.time+"</i></div></div>";
         d.innerHTML = html;
         document.getElementById("containerMessage").appendChild(d);
         let audio = new Audio('message.mp3');
         audio.volume = 1;
         audio.play();
 
+  
         window.setInterval(function() {
         var elem = document.getElementById("containerMessage");
         elem.scrollTop = elem.scrollHeight;
-        }, 5000);
+        },10000000000);
         }
+    
 };
 function createMyMessage() {
+    let date = new Date();
     const d = document.createElement('div');
     let html = "";
     html += "<div class=\"row\">";
@@ -172,7 +180,7 @@ function createMyMessage() {
     html += "</div></div>";
     html += "<div class=\"row\">";
     html += "<div class=\"col-sm-12\">";
-    html += "<div class=\"my-messages float-right\" id=\"message-"+ "\">" + Message.text.replace(/[<]/g, "&lt") + "</div>";
+    html += "<div class=\"my-messages float-right\" id=\"message-"+ "\">" + Message.text.replace(/[<]/g, "&lt") + "<br><i>"+date.getHours()+":"+addZero(date.getMinutes())+"</i></div>";
     html += "</div></div>";
     d.innerHTML = html;
     document.getElementById("containerMessage").appendChild(d);
@@ -197,10 +205,19 @@ const createAlertNewUser =text =>{
         }
         if(jsonRequest.objectType==="IfRoomDeleted")
         {
+            con.send(JSON.stringify(IfRoomDeleted));
             containerMessageBlock.style.display="none";
             containerInterlocutorDisconnected.style.display="block";
         }
     }
+
+function addZero(minute){
+    minute*=1;
+  if(minute<10)
+    return "0"+minute;
+   else
+    return minute;
+}
 
 function btnSetGenderMalePress() {
     UserInfo.gender="male";
@@ -263,7 +280,6 @@ function btnPartnerFemalePress() {
 }
 
 function btnReconnectPress(){
-    con.send(JSON.stringify(IfRoomDeleted));
     con.send(JSON.stringify(ConnectInfo));
     con.send(JSON.stringify(UserInfo));
     con.send(JSON.stringify(InterlocutorInfo));

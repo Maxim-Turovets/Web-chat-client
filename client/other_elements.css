@@ -64,5 +64,9 @@ textarea{
     max-height: 11rem;
     min-height: 3rem;
     /*overflow: hidden; */
+}
 
+i{
+    font-size: 12px;
+    float: right;
 }
