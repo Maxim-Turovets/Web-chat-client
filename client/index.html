@@ -20,8 +20,9 @@
     <div class="d-flex h-100" id="menuBlock">
         <div class="row align-self-center w-100" style="margin: 0!important">
 
+
             <!-- Form  "Chose chat type"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" style="display: ">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" style="display: non">
                 <div class="container-form container-chat-type-form">
                     <form class="form">
                         <div class="row">
@@ -222,9 +223,10 @@
                 </div>
             </div>
 
-            
+
             <!-- Form  "Interlocutor has disconnected"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerInterlocutorDisconnected" style="display: none">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type"
+                 id="containerInterlocutorDisconnected" style="display: none">
                 <div class="container-form container-chat-type-form">
                     <div class="container-form_blur"></div>
                     <form class="form">
@@ -279,17 +281,22 @@
 
 
         <!--Chat form -->
-        <div class="container-form container-chat-form" id="containerChatForm">
+        <div class="container-form container-chat-form" id="containerChatForm" style="">
             <form class="form">
+            <input type="file" id="filename" />
+            <br>
+            <input type="button" value="Upload" onclick="sendFile()" />
+            </form>
+            <form class="form" id="containerForm">
                 <div class="row">
                     <div class="col-9 col-sm-10 col-md-10 col-lg-11">
                         <div class="container-input">
                                                      
                            <textarea class="input input-text js-auto-size" id="inpText" type="text"
-                                   placeholder="Enter message...."></textarea>
+                                     placeholder="Enter message...."></textarea>
                         </div>
                     </div>
-                    <div class="col-3 col-sm-2 col-md-2 col-lg-1">
+                    <div class="col-3 col-sm-2 col-md-2 col-lg-1" style="padding-left: : 0px">
                         <div class="container-btn container-btn-send">
                             <button class="btn btn-send" type="button" id="btnSend">Send</button>
                         </div>

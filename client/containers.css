@@ -27,10 +27,10 @@
 }
 
 .container-form {
-    margin-left: 5%;
+   /* margin-left: 5%;
     margin-right: 5%;
-    margin-bottom: 15px;
-    width: 90%;
+    margin-bottom: 15px;*/
+    width: 100%;
     z-index: 0;
     overflow: hidden;
     display: -webkit-box;
@@ -39,9 +39,9 @@
     display: -ms-flexbox;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 15px 25px 15px 25px;
+    /*padding: 15px 25px 15px 25px;*/
     background: rgba(255, 255, 255, 0.7);
-    border-radius: 50px;
+    /*border-radius: 50px;*/
 }
 
 .container-form .form {
@@ -58,8 +58,8 @@
     position: relative;
     width: 100%;
     z-index: 1;
-    margin-bottom: 5px;
-    padding-top: 10px;
+    /*margin-bottom: 5px;*/
+   /* padding-top: 10px;*/
 }
 
 .container-btn {
@@ -71,8 +71,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 10px;
-    margin-bottom: 5px;
+    padding-top: 3px;
+   /* margin-bottom: 5px;*/
 
 }
 
@@ -113,4 +113,22 @@
 /* optional: show position indicator in red */
 .container-messages::-webkit-scrollbar-thumb {
     background: #FF0000;
+}
+
+.container-form2 {
+   /* margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 15px;*/
+    width: 100%;
+    z-index: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /*padding: 15px 25px 15px 25px;*/
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
 }

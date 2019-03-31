@@ -13,6 +13,7 @@ const menuBlock = document.getElementById("menuBlock");
 const containerMessage = document.getElementById("containerMessage");
 const messageSend =document.getElementById("message-send");
 const containerInterlocutorDisconnected = document.getElementById("containerInterlocutorDisconnected");
+const containerForm = document.getElementById("containerForm");
 
 // button
 const btnPrivate = document.getElementById("btnPrivate");
@@ -38,8 +39,11 @@ const inpPartnersAgeTo = document.getElementById("inpPartnersAgeTo");
 const inpText = document.getElementById("inpText");
 
 
-const text = document.querySelector(".input-text");
+
+
+//adress
 const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
+con.binaryType = "arraybuffer";
 
 
 
@@ -81,6 +85,12 @@ let IfRoomDeleted={
     objectType:"IfRoomDeleted"
 }
 
+let InterlocutorTyping={
+    objectType:"InterlocutorTyping",
+    typing:false,
+    name:""
+}
+
 
 btnGeneral.addEventListener("click", e => btnGenChatPress());
 btnPrivate.addEventListener("click", e => btnPrivatePress());
@@ -100,7 +110,6 @@ btnGoToMainMenu.addEventListener("click", e=>btnGoToMainMenuPress());
 
 
 
-
 con.onopen = () => {
     console.log('connected');
 };
@@ -110,8 +119,11 @@ con.onclose = () => {
 
 con.onmessage = event => {
     console.log(event.data);
+    createImageMessage(event);
+    createInterlocutorTyping(event.data);
     createAlertNewUser(event.data);
     createOtherMessage(event.data);
+    
 };
 
 function btnSendPress() {
@@ -119,6 +131,7 @@ function btnSendPress() {
     Message.text = inpText.value;
     con.send(JSON.stringify(Message));
     createMyMessage();
+    inpText.value = "";
 }
 
 function btnGenChatPress(qualifiedName, value) {
@@ -134,6 +147,38 @@ function btnPrivatePress(qualifiedName, value) {
        containerChatType.style.display = "none";
        containerSetName.style.display="block";
  }
+
+const createImageMessage = event => {
+        var bytes = new Uint8Array(event.data);
+                    var data = "";
+                    var len = bytes.byteLength;
+                    if(len>0)
+                    {
+                    for (var i = 0; i < len; ++i) {
+                        data += String.fromCharCode(bytes[i]);
+                    }
+                   // var img = document.getElementById("image");
+                    //img.src = "data:image/png;base64,"+window.btoa(data);
+
+
+        const d = document.createElement('div');
+        let html = "";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-12\">";
+        html += "</div></div>";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-sm-12\">";
+        html += "<div class=\"other-messages float-left\" id=\"message-\">";
+
+        html += "<img  src='data:image/png;base64,"+window.btoa(data)+"'></<img></div></div>";
+        d.innerHTML = html;
+        document.getElementById("containerMessage").appendChild(d);
+        let audio = new Audio('message.mp3');
+        audio.volume = 1;
+        audio.play();
+    }
+
+}
 
 const createOtherMessage = text => {
     let jsonRequest = JSON.parse(text);
@@ -210,6 +255,45 @@ const createAlertNewUser =text =>{
             containerInterlocutorDisconnected.style.display="block";
         }
     }
+
+const createInterlocutorTyping = text=>{
+    let jsonRequest = JSON.parse(text);
+    if(jsonRequest.objectType==="InterlocutorTyping"&&jsonRequest.typing===true)
+    {
+         const d = document.createElement('div');
+         let html = "<div class=\"maxim\" id=\"containerTyping\" style=\"display: none\">"+
+                    "<svg viewbox=\"0 0 100 20\" style=\"width: 9rem;height: 1.5rem;\">"+
+                        "<defs><linearGradient id=\"gradient\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"1\">"+
+                                "<stop offset=\"5%\" stop-color=\"#326384\"/>"+
+                                "<stop offset=\"95%\" stop-color=\"#123752\"/></linearGradient>"+
+                            "<pattern id=\"wave\" x=\"0\" y=\"0\" width=\"120\" height=\"20\" patternUnits=\"userSpaceOnUse\">"+
+                                "<path id=\"wavePath\""+
+                                      "d=\"M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z\""+
+                                      "mask=\"url(#mask)\" fill=\"url(#gradient)\">"+
+                                    "<animateTransform attributeName=\"transform\" begin=\"0s\" dur=\"1.5s\" type=\"translate\""+
+                                            "from=\"0,0\" to=\"40,0\" repeatCount=\"indefinite\"/> </path></pattern>"+
+                        "</defs>"+
+                        "<text text-anchor=\"middle\" x=\"50\" y=\"15\" font-size=\"10\" fill=\"url(#wave)\" fill-opacity=\"0.6\">"+
+                           jsonRequest.name+" typing... ✍"+
+                        "</text>"+
+                        "<text text-anchor=\"middle\" x=\"50\" y=\"15\" font-size=\"10\" fill=\"url(#gradient)\""+
+                              "fill-opacity=\"0.1\">"+jsonRequest.name+" typing... ✍"+
+                        "</text>"+
+                    "</svg>"+
+                "</div>";
+
+          d.innerHTML = html;
+          containerForm.insertBefore(d, containerForm.children[0])
+          const containerTyping = document.getElementById("containerTyping");
+          containerTyping.style.display ="block";
+    }
+    if (jsonRequest.objectType === "InterlocutorTyping" && jsonRequest.typing===false)
+    {
+    const containerTyping = document.getElementById("containerTyping");
+      containerTyping.style.display ="none";
+    }
+
+} 
 
 function addZero(minute){
     minute*=1;
@@ -291,3 +375,34 @@ function btnGoToMainMenuPress(){
     containerChatType.style.display="block";
     containerInterlocutorDisconnected.style.display="none";
 }
+
+inpText.onfocus = function() {
+InterlocutorTyping.typing = true;
+InterlocutorTyping.name = UserInfo.name;
+ con.send(JSON.stringify(InterlocutorTyping));
+};
+
+inpText.onblur = function() { 
+  InterlocutorTyping.typing = false;  
+ con.send(JSON.stringify(InterlocutorTyping));
+};
+
+
+
+
+    function sendFile() {
+            var file = document.getElementById('filename').files[0];
+            var reader = new FileReader();
+            var rawData = new ArrayBuffer();
+            var finalByte =new ArrayBuffer(1);             
+        
+            reader.onload = function(e) {
+                rawData = e.target.result;
+                con.send(rawData);
+                con.send(finalByte)
+            }
+
+            reader.readAsArrayBuffer(file);
+
+        }
+
