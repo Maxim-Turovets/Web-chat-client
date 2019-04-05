@@ -127,12 +127,12 @@ con.onclose = () => {
 };
 
 con.onmessage = event => {
-    console.log(event.data);
+    console.log(objectInfo(event.data));
     createImageMessage(event);
     createInterlocutorTyping(event.data);
     createAlertNewUser(event.data);
     createOtherMessage(event.data);
-    
+
 };
 
 function btnSendPress() {
@@ -166,7 +166,7 @@ const createImageMessage = event=> {
                     for (var i = 0; i < len; ++i) {
                         data += String.fromCharCode(bytes[i]);
                     }
-            
+
 
 
         const d = document.createElement('div');
@@ -205,7 +205,7 @@ function createMyImageMessage (arraybuff) {
                     for (var i = 0; i < len; ++i) {
                         data += String.fromCharCode(bytes[i]);
                     }
-            
+
 
         let date = new Date();
         const d = document.createElement('div');
@@ -231,10 +231,10 @@ function createMyImageMessage (arraybuff) {
 
 const createOtherMessage = text => {
     let jsonRequest = JSON.parse(text);
-      
+
        if(jsonRequest.objectType === "Message")
        {
-        
+
         const d = document.createElement('div');
         let html = "";
         html += "<div class=\"row\">";
@@ -256,12 +256,12 @@ const createOtherMessage = text => {
         audio.volume = 1;
         audio.play();
 
-  
-        
+
+
         var elem = document.getElementById("containerMessage");
         elem.scrollTop = elem.scrollHeight;
     }
-    
+
 }
 function createMyMessage() {
     let date = new Date();
@@ -286,7 +286,7 @@ function createMyMessage() {
 
 const createAlertNewUser =text =>{
         let jsonRequest = JSON.parse(text);
-        if (jsonRequest.objectType === "IfRoomCreated") 
+        if (jsonRequest.objectType === "IfRoomCreated")
         {
             menuBlock.style.display="none";
             containerLoading.style.display="none";
@@ -349,7 +349,7 @@ const createInterlocutorTyping = text=>{
       containerTyping.style.display ="none";
     }
 
-} 
+}
 
 function addZero(minute){
     minute*=1;
@@ -438,21 +438,35 @@ InterlocutorTyping.name = UserInfo.name;
  con.send(JSON.stringify(InterlocutorTyping));
 };
 
-inpText.onblur = function() { 
-  InterlocutorTyping.typing = false;  
+inpText.onblur = function() {
+  InterlocutorTyping.typing = false;
  con.send(JSON.stringify(InterlocutorTyping));
 };
 
 
-
+function  objectInfo(json) {
+    let returnJson = "";
+    let count = 0;
+    for ( i = 0; i < json.length; i++) {
+        if (json.charAt(i) == '\"') {
+            count++;
+            continue;
+        }
+        if (count == 3) {
+            returnJson+=json.charAt(i);
+        }
+    }
+  //  returnJson;
+    return returnJson;
+}
 
     function sendFile() {
             var file = document.getElementById('filename').files[0];
             var reader = new FileReader();
             var rawData = new ArrayBuffer();
-            var finalByte =new ArrayBuffer(1);  
+            var finalByte =new ArrayBuffer(1);
 
-        
+
             reader.onload = function(e) {
                 rawData = e.target.result;
                 con.send(rawData);
@@ -465,38 +479,7 @@ inpText.onblur = function() {
         }
 
 
-// VOICE
 
-navigator.mediaDevices.getUserMedia({ audio: true})
-       .then(stream => {
-      const mediaRecorder = new MediaRecorder(stream);
-    
-      document.querySelector('#start').addEventListener('click', function(){
-        mediaRecorder.start();
-        stop.style.background ="red";
-      });
-    var audioChunks = [];
-    mediaRecorder.addEventListener("dataavailable",function(event) {
-        audioChunks.push(event.data);
-    });
-
-    mediaRecorder.addEventListener("stop", function() {
-        const audioBlob = new Blob(audioChunks, {
-            type: 'audio/wav'
-        });
-    const audioUrl = URL.createObjectURL(audioBlob);
-      var audio = document.createElement('audio');
-      audio.src = audioUrl;
-      audio.controls = true;
-      audio.autoplay = true;
-    document.querySelector('#audio').appendChild(audio);
-       audioChunks = [];
-       con.send(stream);
-});
-    document.querySelector('#stop').addEventListener('click', function(){
-         mediaRecorder.stop();
-      });
-});
 
 
 window.onbeforeunload = function (evt) {
@@ -509,3 +492,4 @@ window.onbeforeunload = function (evt) {
         }
         return message;
     }
+
