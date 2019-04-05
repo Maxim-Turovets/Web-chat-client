@@ -12,7 +12,6 @@
     color: #666666;
     display: block;
     width: 100%;
-    background: #e6e6e6;
     height: 40px;
     border-radius: 25px;
     padding: 0 10px 0 10px;
@@ -91,11 +90,19 @@ img{
 }
 
 label{
-    padding:5px;
-    border-radius:9px;
-    background-image: "images.png";
-    display: table;
-    color: #fff;
+    margin-left: 8px;
+    background-image: url("images.png");
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 46px;
+}
+#btnSendImage{
+    background: white;
+    margin-left: 8px;
+    background-image: url("send.png");
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 46px;
 }
 
 

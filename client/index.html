@@ -23,9 +23,8 @@
             <!-- Header container -->
             <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type"  style="display: none" id="containerHeader" >
                 <form class="formSendFile">
-            <input type="file" id="filename"  style="max-width: 15rem;"/>
-            <br>
-            <input  class="btn" id="btnSendFile" type="button" value="Send file" onclick="sendFile()" />
+
+
 
             </form>
             </div>
@@ -53,6 +52,11 @@
                             <div class=" col-sm-6">
                                 <div class="container-btn">
                                     <button type="button" class="btn btn-general" id="btnGeneral">General</button>
+                                </div>
+                            </div>
+                            <div class=" col-sm-6">
+                                <div class="container-btn">
+                                    <button type="button" class="btn btn-general" id="btnTesting">Testing</button>
                                 </div>
                             </div>
                         </div>
@@ -301,7 +305,16 @@
         <div class="container-form2 container-chat-form" id="containerChatForm" style="">
             <form class="form" id="containerForm">
                 <div class="row">
-                    <div class="col-9 col-sm-10 col-md-10 col-lg-11">
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+                        <label id="label">
+                            <input type="file" id="filename" size="60" >
+                        </label>
+
+                        <button  style="display: none;" id="btnSendImage" type="button" value="" onclick="sendFile()"></button>
+
+
+                    </div>
+                    <div class="col-7 col-sm-8 col-md-8 col-lg-9">
     
                         <div class="container-input">
                                                      

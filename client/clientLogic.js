@@ -32,9 +32,8 @@ const btnSearch = document.getElementById("btnSearch");
 const btnSend = document.getElementById("btnSend");
 const btnReconnect = document.getElementById("btnReconnect");
 const btnGoToMainMenu = document.getElementById("btnGoToMainMenu");
-
-const start = document.getElementById("start");
-const stop = document.getElementById("stop");
+const btnSendImage = document.getElementById("btnSendImage");
+const btnTesting = document.getElementById("btnTesting");
 
 
 
@@ -44,6 +43,7 @@ const inpSetAge = document.getElementById("inpSetAge");
 const inpPartnersAgeFrom = document.getElementById("inpPartnersAgeFrom");
 const inpPartnersAgeTo = document.getElementById("inpPartnersAgeTo");
 const inpText = document.getElementById("inpText");
+const filename = document.getElementById("filename");
 
 
 
@@ -114,6 +114,8 @@ btnSend.addEventListener("click", e => btnSendPress());
 btnReconnect.addEventListener("click", e => btnReconnectPress());
 btnGoToMainMenu.addEventListener("click", e=>btnGoToMainMenuPress());
 
+filename.addEventListener("click",e=>filenamePress())
+btnTesting.addEventListener("click", e=>testing());
 
 
 
@@ -292,7 +294,7 @@ const createAlertNewUser =text =>{
             containerLoading.style.display="none";
             containerMessageBlock.style.display="block";
             containerHeader.style.display="block";
-            containerVoice.style.display="block";
+
 
             IfRoomCreated.nameInterlocutor = jsonRequest.nameInterlocutor;
             const d = document.createElement('div');
@@ -461,6 +463,8 @@ function  objectInfo(json) {
 }
 
     function sendFile() {
+        btnSendImage.style.display="none";
+        document.getElementById("label").style.display="block";
             var file = document.getElementById('filename').files[0];
             var reader = new FileReader();
             var rawData = new ArrayBuffer();
@@ -476,7 +480,26 @@ function  objectInfo(json) {
 
             reader.readAsArrayBuffer(file);
 
+
         }
+
+
+function testing(){
+    ConnectInfo.chatType="pair";
+    UserInfo.name = "1";
+    UserInfo.age = "1";
+    UserInfo.gender="male";
+    UserInfo.voiceMessage = false;
+    InterlocutorInfo.ageFrom="1";
+    InterlocutorInfo.ageTo="5";
+    InterlocutorInfo.gender="male";
+    containerChatType.style.display = "none";
+
+    con.send(JSON.stringify(ConnectInfo));
+    con.send(JSON.stringify(UserInfo));
+    con.send(JSON.stringify(InterlocutorInfo));
+
+}
 
 
 
@@ -492,4 +515,10 @@ window.onbeforeunload = function (evt) {
         }
         return message;
     }
+
+
+ function filenamePress(){
+    document.getElementById("label").style.display="none";
+     btnSendImage.style.display="block";
+ }
 
