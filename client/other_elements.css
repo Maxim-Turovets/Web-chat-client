@@ -89,3 +89,17 @@ img{
     max-height: 35rem;
     margin-top:2%;
 }
+
+label{
+    padding:5px;
+    border-radius:9px;
+    background-image: "images.png";
+    display: table;
+    color: #fff;
+}
+
+
+
+input[type="file"] {
+    display: none;
+}
