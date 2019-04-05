@@ -27,9 +27,7 @@
 }
 
 .container-form {
-   /* margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 15px;*/
+    margin-bottom: 15px;
     width: 100%;
     z-index: 0;
     overflow: hidden;
@@ -39,9 +37,9 @@
     display: -ms-flexbox;
     flex-wrap: wrap;
     justify-content: space-between;
-    /*padding: 15px 25px 15px 25px;*/
+    padding: 15px 25px 15px 25px;
     background: rgba(255, 255, 255, 0.7);
-    /*border-radius: 50px;*/
+    border-radius: 50px;
 }
 
 .container-form .form {
@@ -58,8 +56,6 @@
     position: relative;
     width: 100%;
     z-index: 1;
-    /*margin-bottom: 5px;*/
-   /* padding-top: 10px;*/
 }
 
 .container-btn {
@@ -72,12 +68,11 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 3px;
-   /* margin-bottom: 5px;*/
-
 }
 
 .container-messages{
-    height: 78%;
+    margin-top: 2rem;
+    height: 86%;
     width: 100%;
     padding: 5px;
     overflow-y: scroll;
@@ -89,13 +84,13 @@
 
 @media (min-height: 600px){
     .container-messages {
-        height: 80%;
+        height: 88%;
     }
 }
 
 @media (min-height: 800px){
     .container-messages {
-        height: 85%;
+        height: 90%;
     }
 }
 
@@ -116,9 +111,6 @@
 }
 
 .container-form2 {
-   /* margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 15px;*/
     width: 100%;
     z-index: 0;
     overflow: hidden;
@@ -128,7 +120,60 @@
     display: -ms-flexbox;
     flex-wrap: wrap;
     justify-content: space-between;
-    /*padding: 15px 25px 15px 25px;*/
     background: rgba(255, 255, 255, 0.7);
-    border-radius: 50px;
 }
+
+#containerHeader{
+        padding-left: 5%;
+        z-index: 3;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 3rem;
+    background: #25acc1;
+    border-radius: 200px 0px 200px 0px;
+    border-radius: 20px,0px,20px,30px;
+}
+}
+
+.formSendFile{
+       display: inline-flex; 
+           position: fixed;
+    z-index: 2;
+}
+
+
+h1 {
+  font-size: 29px;
+  font-weight: normal;
+  cursor: pointer;
+  text-shadow: -1px -1px #FFF,
+               -2px -2px #FFF,
+               -1px 1px #FFF,
+               -2px 2px #FFF,
+               1px 1px #FFF,
+               2px 2px #FFF,
+               1px -1px #FFF,
+               2px -2px #FFF,
+               -3px -3px 2px #BBB,
+               -3px 3px 2px #BBB,
+               3px 3px 2px #BBB,
+               3px -3px 2px #BBB;
+  color: steelblue;
+  transition: all 1s;
+  }
+  h1:hover {
+    color: yellowgreen;
+    }
+
+#interlocutorstatus{
+        /* float: left; */
+    background: #ecf1f4;
+    /* border: 1px solid #cfdfe9; */
+    padding: 8px;
+    border-radius: 13px 0px 7px 0px;
+    color: #6a6b72;
+    /* max-width: 82%; */
+    /* margin-left: -2px; */
+}    

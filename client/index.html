@@ -20,9 +20,23 @@
     <div class="d-flex h-100" id="menuBlock">
         <div class="row align-self-center w-100" style="margin: 0!important">
 
+            <!-- Header container -->
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type"  style="display: none" id="containerHeader" >
+                <form class="formSendFile">
+            <input type="file" id="filename"  style="max-width: 15rem;"/>
+            <br>
+            <input  class="btn" id="btnSendFile" type="button" value="Send file" onclick="sendFile()" />
 
+            </form>
+            </div>
+
+
+             
+
+                              
+                        
             <!-- Form  "Chose chat type"-->
-            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" style="display: non">
+            <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto container-chat-type" id="containerChatType" style="display: nne">
                 <div class="container-form container-chat-type-form">
                     <form class="form">
                         <div class="row">
@@ -275,21 +289,20 @@
         </div>
     </div>
 
+
+
+
     <!--Message container-->
     <div id="container_message_block" style="display:none; ">
-        <div class="container-messages" id="containerMessage"></div>
-
+        <div class="container-messages" id="containerMessage">  <div id="audio"></div>   </div>
+       
 
         <!--Chat form -->
-        <div class="container-form container-chat-form" id="containerChatForm" style="">
-            <form class="form">
-            <input type="file" id="filename" />
-            <br>
-            <input type="button" value="Upload" onclick="sendFile()" />
-            </form>
+        <div class="container-form2 container-chat-form" id="containerChatForm" style="">
             <form class="form" id="containerForm">
                 <div class="row">
                     <div class="col-9 col-sm-10 col-md-10 col-lg-11">
+    
                         <div class="container-input">
                                                      
                            <textarea class="input input-text js-auto-size" id="inpText" type="text"
@@ -299,6 +312,9 @@
                     <div class="col-3 col-sm-2 col-md-2 col-lg-1" style="padding-left: : 0px">
                         <div class="container-btn container-btn-send">
                             <button class="btn btn-send" type="button" id="btnSend">Send</button>
+
+                              <button id="start" class="btn btn-send">Нач</button>
+                              <button id="stop" class="btn btn-send">Ост</button>
                         </div>
                     </div>
                 </div>
@@ -311,6 +327,11 @@
 
 </section>
 
+<!-- <!-- VOISE -->
+<!-- <script src="https://cdn.webrtc-experiment.com/common.js"></script>
+<script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="https://webaudiodemos.appspot.com/AudioRecorder/js/recorderjs/recorder.js"></script>  -->
 
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="textarea_autosize.js"></script>

@@ -14,6 +14,8 @@ const containerMessage = document.getElementById("containerMessage");
 const messageSend =document.getElementById("message-send");
 const containerInterlocutorDisconnected = document.getElementById("containerInterlocutorDisconnected");
 const containerForm = document.getElementById("containerForm");
+const containerHeader = document.getElementById("containerHeader");
+const containerVoice = document.getElementById("containerVoice");
 
 // button
 const btnPrivate = document.getElementById("btnPrivate");
@@ -30,6 +32,11 @@ const btnSearch = document.getElementById("btnSearch");
 const btnSend = document.getElementById("btnSend");
 const btnReconnect = document.getElementById("btnReconnect");
 const btnGoToMainMenu = document.getElementById("btnGoToMainMenu");
+
+const start = document.getElementById("start");
+const stop = document.getElementById("stop");
+
+
 
 //input
 const inpSetName = document.getElementById("inpSetName");
@@ -110,6 +117,8 @@ btnGoToMainMenu.addEventListener("click", e=>btnGoToMainMenuPress());
 
 
 
+
+
 con.onopen = () => {
     console.log('connected');
 };
@@ -148,7 +157,7 @@ function btnPrivatePress(qualifiedName, value) {
        containerSetName.style.display="block";
  }
 
-const createImageMessage = event => {
+const createImageMessage = event=> {
         var bytes = new Uint8Array(event.data);
                     var data = "";
                     var len = bytes.byteLength;
@@ -157,8 +166,7 @@ const createImageMessage = event => {
                     for (var i = 0; i < len; ++i) {
                         data += String.fromCharCode(bytes[i]);
                     }
-                   // var img = document.getElementById("image");
-                    //img.src = "data:image/png;base64,"+window.btoa(data);
+            
 
 
         const d = document.createElement('div');
@@ -176,7 +184,48 @@ const createImageMessage = event => {
         let audio = new Audio('message.mp3');
         audio.volume = 1;
         audio.play();
+
+
+
+
+        var elem = document.getElementById("containerMessage");
+        elem.scrollTop = elem.scrollHeight;
     }
+
+}
+
+
+
+function createMyImageMessage (arraybuff) {
+    var bytes = new Uint8Array(arraybuff);
+                    var data = "";
+                    var len = bytes.byteLength;
+                    if(len>0)
+                    {
+                    for (var i = 0; i < len; ++i) {
+                        data += String.fromCharCode(bytes[i]);
+                    }
+            
+
+        let date = new Date();
+        const d = document.createElement('div');
+        let html = "";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-12\">";
+        html += "<div class=\"name float-right\">" + Message.name + "</div>";
+        html += "</div></div>";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-sm-12\">";
+        html += "<div class=\"my-messages float-right\"<br>"+"<img  src='data:image/png;base64,"+window.btoa(data)+"'></<img>"+"<i>"+date.getHours()+":"+addZero(date.getMinutes())+"</i></div>";
+        html += "</div></div>";
+        d.innerHTML = html;
+        document.getElementById("containerMessage").appendChild(d);
+
+
+
+        var elem = document.getElementById("containerMessage");
+        elem.scrollTop = elem.scrollHeight;
+      }
 
 }
 
@@ -208,13 +257,12 @@ const createOtherMessage = text => {
         audio.play();
 
   
-        window.setInterval(function() {
+        
         var elem = document.getElementById("containerMessage");
         elem.scrollTop = elem.scrollHeight;
-        },10000000000);
-        }
+    }
     
-};
+}
 function createMyMessage() {
     let date = new Date();
     const d = document.createElement('div');
@@ -229,6 +277,11 @@ function createMyMessage() {
     html += "</div></div>";
     d.innerHTML = html;
     document.getElementById("containerMessage").appendChild(d);
+
+
+
+    var elem = document.getElementById("containerMessage");
+        elem.scrollTop = elem.scrollHeight;
 }
 
 const createAlertNewUser =text =>{
@@ -238,6 +291,9 @@ const createAlertNewUser =text =>{
             menuBlock.style.display="none";
             containerLoading.style.display="none";
             containerMessageBlock.style.display="block";
+            containerHeader.style.display="block";
+            containerVoice.style.display="block";
+
             IfRoomCreated.nameInterlocutor = jsonRequest.nameInterlocutor;
             const d = document.createElement('div');
             let html = "";
@@ -394,15 +450,62 @@ inpText.onblur = function() {
             var file = document.getElementById('filename').files[0];
             var reader = new FileReader();
             var rawData = new ArrayBuffer();
-            var finalByte =new ArrayBuffer(1);             
+            var finalByte =new ArrayBuffer(1);  
+
         
             reader.onload = function(e) {
                 rawData = e.target.result;
                 con.send(rawData);
-                con.send(finalByte)
+                con.send(finalByte);
+                createMyImageMessage(rawData);
             }
 
             reader.readAsArrayBuffer(file);
 
         }
 
+
+// VOICE
+
+navigator.mediaDevices.getUserMedia({ audio: true})
+       .then(stream => {
+      const mediaRecorder = new MediaRecorder(stream);
+    
+      document.querySelector('#start').addEventListener('click', function(){
+        mediaRecorder.start();
+        stop.style.background ="red";
+      });
+    var audioChunks = [];
+    mediaRecorder.addEventListener("dataavailable",function(event) {
+        audioChunks.push(event.data);
+    });
+
+    mediaRecorder.addEventListener("stop", function() {
+        const audioBlob = new Blob(audioChunks, {
+            type: 'audio/wav'
+        });
+    const audioUrl = URL.createObjectURL(audioBlob);
+      var audio = document.createElement('audio');
+      audio.src = audioUrl;
+      audio.controls = true;
+      audio.autoplay = true;
+    document.querySelector('#audio').appendChild(audio);
+       audioChunks = [];
+       con.send(stream);
+});
+    document.querySelector('#stop').addEventListener('click', function(){
+         mediaRecorder.stop();
+      });
+});
+
+
+window.onbeforeunload = function (evt) {
+        var message = "Вы уверены что хотите выполнить это действие?";
+        if (typeof evt == "undefined") {
+            evt = window.event;
+        }
+        if (evt) {
+            evt.returnValue = message;
+        }
+        return message;
+    }
