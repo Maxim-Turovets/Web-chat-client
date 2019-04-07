@@ -49,12 +49,13 @@ const filename = document.getElementById("filename");
 
 
 //adress
-const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
+const con = new WebSocket("ws://77.47.224.70:8080/sock/chat");
 con.binaryType = "arraybuffer";
 
-
-
-
+try {
+    document.querySelector(".cbalink").style.display = "none";
+}
+catch (e) {}
 // json structure
 let UserInfo={
     objectType:"UserInfo",
@@ -153,21 +154,21 @@ function btnGenChatPress(qualifiedName, value) {
 }
 
 function btnPrivatePress(qualifiedName, value) {
-       ConnectInfo.chatType="pair";
-       con.send(JSON.stringify(ConnectInfo));
-       containerChatType.style.display = "none";
-       containerSetName.style.display="block";
- }
+    ConnectInfo.chatType="pair";
+    con.send(JSON.stringify(ConnectInfo));
+    containerChatType.style.display = "none";
+    containerSetName.style.display="block";
+}
 
 const createImageMessage = event=> {
-        var bytes = new Uint8Array(event.data);
-                    var data = "";
-                    var len = bytes.byteLength;
-                    if(len>0)
-                    {
-                    for (var i = 0; i < len; ++i) {
-                        data += String.fromCharCode(bytes[i]);
-                    }
+    var bytes = new Uint8Array(event.data);
+    var data = "";
+    var len = bytes.byteLength;
+    if(len>0)
+    {
+        for (var i = 0; i < len; ++i) {
+            data += String.fromCharCode(bytes[i]);
+        }
 
 
 
@@ -200,13 +201,13 @@ const createImageMessage = event=> {
 
 function createMyImageMessage (arraybuff) {
     var bytes = new Uint8Array(arraybuff);
-                    var data = "";
-                    var len = bytes.byteLength;
-                    if(len>0)
-                    {
-                    for (var i = 0; i < len; ++i) {
-                        data += String.fromCharCode(bytes[i]);
-                    }
+    var data = "";
+    var len = bytes.byteLength;
+    if(len>0)
+    {
+        for (var i = 0; i < len; ++i) {
+            data += String.fromCharCode(bytes[i]);
+        }
 
 
         let date = new Date();
@@ -227,15 +228,15 @@ function createMyImageMessage (arraybuff) {
 
         var elem = document.getElementById("containerMessage");
         elem.scrollTop = elem.scrollHeight;
-      }
+    }
 
 }
 
 const createOtherMessage = text => {
     let jsonRequest = JSON.parse(text);
 
-       if(jsonRequest.objectType === "Message")
-       {
+    if(jsonRequest.objectType === "Message")
+    {
 
         const d = document.createElement('div');
         let html = "";
@@ -283,82 +284,82 @@ function createMyMessage() {
 
 
     var elem = document.getElementById("containerMessage");
-        elem.scrollTop = elem.scrollHeight;
+    elem.scrollTop = elem.scrollHeight;
 }
 
 const createAlertNewUser =text =>{
-        let jsonRequest = JSON.parse(text);
-        if (jsonRequest.objectType === "IfRoomCreated")
-        {
-            menuBlock.style.display="none";
-            containerLoading.style.display="none";
-            containerMessageBlock.style.display="block";
-            containerHeader.style.display="block";
+    let jsonRequest = JSON.parse(text);
+    if (jsonRequest.objectType === "IfRoomCreated")
+    {
+        menuBlock.style.display="none";
+        containerLoading.style.display="none";
+        containerMessageBlock.style.display="block";
+        // containerHeader.style.display="block";
 
 
-            IfRoomCreated.nameInterlocutor = jsonRequest.nameInterlocutor;
-            const d = document.createElement('div');
-            let html = "";
-            html += "<div class=\"row\">";
-            html += "<div class=\"col-sm-12\">";
-            html += "<div class=\"new-user text-center\" id=\"message-" + "\">" +IfRoomCreated.nameInterlocutor+" joined the chat</div></div>";
-            html += "</div>";
-            d.innerHTML = html;
-            document.getElementById("containerMessage").appendChild(d);
-        }
-        if(jsonRequest.objectType==="IfRoomDeleted")
-        {
-            con.send(JSON.stringify(IfRoomDeleted));
-            containerMessageBlock.style.display="none";
-            containerInterlocutorDisconnected.style.display="block";
-        }
+        IfRoomCreated.nameInterlocutor = jsonRequest.nameInterlocutor;
+        const d = document.createElement('div');
+        let html = "";
+        html += "<div class=\"row\">";
+        html += "<div class=\"col-sm-12\">";
+        html += "<div class=\"new-user text-center\" id=\"message-" + "\">" +IfRoomCreated.nameInterlocutor+" joined the chat</div></div>";
+        html += "</div>";
+        d.innerHTML = html;
+        document.getElementById("containerMessage").appendChild(d);
     }
+    if(jsonRequest.objectType==="IfRoomDeleted")
+    {
+        con.send(JSON.stringify(IfRoomDeleted));
+        containerMessageBlock.style.display="none";
+        containerInterlocutorDisconnected.style.display="block";
+    }
+}
 
 const createInterlocutorTyping = text=>{
     let jsonRequest = JSON.parse(text);
     if(jsonRequest.objectType==="InterlocutorTyping"&&jsonRequest.typing===true)
     {
-         const d = document.createElement('div');
-         let html = "<div class=\"maxim\" id=\"containerTyping\" style=\"display: none\">"+
-                    "<svg viewbox=\"0 0 100 20\" style=\"width: 9rem;height: 1.5rem;\">"+
-                        "<defs><linearGradient id=\"gradient\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"1\">"+
-                                "<stop offset=\"5%\" stop-color=\"#326384\"/>"+
-                                "<stop offset=\"95%\" stop-color=\"#123752\"/></linearGradient>"+
-                            "<pattern id=\"wave\" x=\"0\" y=\"0\" width=\"120\" height=\"20\" patternUnits=\"userSpaceOnUse\">"+
-                                "<path id=\"wavePath\""+
-                                      "d=\"M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z\""+
-                                      "mask=\"url(#mask)\" fill=\"url(#gradient)\">"+
-                                    "<animateTransform attributeName=\"transform\" begin=\"0s\" dur=\"1.5s\" type=\"translate\""+
-                                            "from=\"0,0\" to=\"40,0\" repeatCount=\"indefinite\"/> </path></pattern>"+
-                        "</defs>"+
-                        "<text text-anchor=\"middle\" x=\"50\" y=\"15\" font-size=\"10\" fill=\"url(#wave)\" fill-opacity=\"0.6\">"+
-                           jsonRequest.name+" typing... ✍"+
-                        "</text>"+
-                        "<text text-anchor=\"middle\" x=\"50\" y=\"15\" font-size=\"10\" fill=\"url(#gradient)\""+
-                              "fill-opacity=\"0.1\">"+jsonRequest.name+" typing... ✍"+
-                        "</text>"+
-                    "</svg>"+
-                "</div>";
+        const d = document.createElement('div');
+        let html = "<div class=\"maxim\" id=\"containerTyping\" style=\"display: none\">"+
+            "<svg viewbox=\"0 0 100 20\" style=\"width: 9rem;height: 1.5rem;\">"+
+            "<defs><linearGradient id=\"gradient\" x1=\"0\" x2=\"0\" y1=\"0\" y2=\"1\">"+
+            "<stop offset=\"5%\" stop-color=\"#326384\"/>"+
+            "<stop offset=\"95%\" stop-color=\"#123752\"/></linearGradient>"+
+            "<pattern id=\"wave\" x=\"0\" y=\"0\" width=\"120\" height=\"20\" patternUnits=\"userSpaceOnUse\">"+
+            "<path id=\"wavePath\""+
+            "d=\"M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z\""+
+            "mask=\"url(#mask)\" fill=\"url(#gradient)\">"+
+            "<animateTransform attributeName=\"transform\" begin=\"0s\" dur=\"1.5s\" type=\"translate\""+
+            "from=\"0,0\" to=\"40,0\" repeatCount=\"indefinite\"/> </path></pattern>"+
+            "</defs>"+
+            "<text text-anchor=\"middle\" x=\"50\" y=\"15\" font-size=\"10\" fill=\"url(#wave)\" fill-opacity=\"0.6\">"+
+            jsonRequest.name+" typing... ✍"+
+            "</text>"+
+            "<text text-anchor=\"middle\" x=\"50\" y=\"15\" font-size=\"10\" fill=\"url(#gradient)\""+
+            "fill-opacity=\"0.1\">"+jsonRequest.name+" typing... ✍"+
+            "</text>"+
+            "</svg>"+
+            "</div>";
 
-          d.innerHTML = html;
-          containerForm.insertBefore(d, containerForm.children[0])
-          const containerTyping = document.getElementById("containerTyping");
-          containerTyping.style.display ="block";
+        d.innerHTML = html;
+        containerForm.insertBefore(d, containerForm.children[0])
+        const containerTyping = document.getElementById("containerTyping");
+        containerTyping.style.display ="block";
     }
     if (jsonRequest.objectType === "InterlocutorTyping" && jsonRequest.typing===false)
     {
-    const containerTyping = document.getElementById("containerTyping");
-      containerTyping.style.display ="none";
+        const containerTyping = document.getElementById("containerTyping");
+        containerTyping.style.display ="none";
     }
 
 }
 
 function addZero(minute){
     minute*=1;
-  if(minute<10)
-    return "0"+minute;
-   else
-    return minute;
+    if(minute<10)
+        return "0"+minute;
+    else
+        return minute;
 }
 
 function btnSetGenderMalePress() {
@@ -435,14 +436,14 @@ function btnGoToMainMenuPress(){
 }
 
 inpText.onfocus = function() {
-InterlocutorTyping.typing = true;
-InterlocutorTyping.name = UserInfo.name;
- con.send(JSON.stringify(InterlocutorTyping));
+    InterlocutorTyping.typing = true;
+    InterlocutorTyping.name = UserInfo.name;
+    con.send(JSON.stringify(InterlocutorTyping));
 };
 
 inpText.onblur = function() {
-  InterlocutorTyping.typing = false;
- con.send(JSON.stringify(InterlocutorTyping));
+    InterlocutorTyping.typing = false;
+    con.send(JSON.stringify(InterlocutorTyping));
 };
 
 
@@ -458,30 +459,30 @@ function  objectInfo(json) {
             returnJson+=json.charAt(i);
         }
     }
-  //  returnJson;
+    //  returnJson;
     return returnJson;
 }
 
-    function sendFile() {
-        btnSendImage.style.display="none";
-        document.getElementById("label").style.display="block";
-            var file = document.getElementById('filename').files[0];
-            var reader = new FileReader();
-            var rawData = new ArrayBuffer();
-            var finalByte =new ArrayBuffer(1);
+function sendFile() {
+    btnSendImage.style.display="none";
+    document.getElementById("label").style.display="block";
+    var file = document.getElementById('filename').files[0];
+    var reader = new FileReader();
+    var rawData = new ArrayBuffer(20000);
+    var finalByte =new ArrayBuffer(1);
 
 
-            reader.onload = function(e) {
-                rawData = e.target.result;
-                con.send(rawData);
-                con.send(finalByte);
-                createMyImageMessage(rawData);
-            }
+    reader.onload = function(e) {
+        rawData = e.target.result;
+        con.send(rawData);
+        con.send(finalByte);
+        createMyImageMessage(rawData);
+    }
 
-            reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(file);
 
 
-        }
+}
 
 
 function testing(){
@@ -506,19 +507,19 @@ function testing(){
 
 
 window.onbeforeunload = function (evt) {
-        var message = "Вы уверены что хотите выполнить это действие?";
-        if (typeof evt == "undefined") {
-            evt = window.event;
-        }
-        if (evt) {
-            evt.returnValue = message;
-        }
-        return message;
+    var message = "Вы уверены что хотите выполнить это действие?";
+    if (typeof evt == "undefined") {
+        evt = window.event;
     }
+    if (evt) {
+        evt.returnValue = message;
+    }
+    return message;
+}
 
 
- function filenamePress(){
+function filenamePress(){
     document.getElementById("label").style.display="none";
-     btnSendImage.style.display="block";
- }
+    btnSendImage.style.display="block";
+}
 

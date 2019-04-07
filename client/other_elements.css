@@ -110,3 +110,7 @@ label{
 input[type="file"] {
     display: none;
 }
+
+.cbalink{
+    display: none;
+}
