@@ -49,7 +49,7 @@ const filename = document.getElementById("filename");
 
 
 //adress
-const con = new WebSocket("ws://77.47.224.70:8080/sock/chat");
+const con = new WebSocket("ws://77.47.224.135:8080/sock/chat");
 con.binaryType = "arraybuffer";
 
 try {
