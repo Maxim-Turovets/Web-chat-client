@@ -58,9 +58,9 @@ try {
 catch (e) {}
 // json structure
 let UserInfo={
-    objectType:"UserInfo",
     name:"",
     gender:"",
+    objectType:"UserInfo",
     age:"",
     voiceMessage:false
 };
@@ -466,6 +466,7 @@ function  objectInfo(json) {
 function sendFile() {
     btnSendImage.style.display="none";
     document.getElementById("label").style.display="block";
+
     var file = document.getElementById('filename').files[0];
     var reader = new FileReader();
     var rawData = new ArrayBuffer(20000);
@@ -487,7 +488,7 @@ function sendFile() {
 
 function testing(){
     ConnectInfo.chatType="pair";
-    UserInfo.name = "1";
+    UserInfo.name = "Web Client";
     UserInfo.age = "1";
     UserInfo.gender="male";
     UserInfo.voiceMessage = false;

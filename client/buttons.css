@@ -62,5 +62,10 @@
 
 #btnSendFile{
     height: 2rem;
-    
+}
+
+#btnSend{
+    background-image: url("icon/send-circle-outline-36.png");
+    width: 36px;
+    height: 36px;
 }
