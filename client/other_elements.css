@@ -91,7 +91,7 @@ img{
 
 label{
     margin-left: 8px;
-    background-image: url("images.png");
+    background-image: url("icon/image-outline-36.png");
     background-repeat: no-repeat;
     width: 45px;
     height: 46px;
@@ -99,7 +99,7 @@ label{
 #btnSendImage{
     background: white;
     margin-left: 8px;
-    background-image: url("send.png");
+    background-image: url("icon/image-outline-36.png");
     background-repeat: no-repeat;
     width: 45px;
     height: 46px;
